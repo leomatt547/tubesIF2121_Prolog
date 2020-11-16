@@ -8,3 +8,19 @@ help :-
     write('6. d      : gerak ke ke timur 1 langkah'),nl,
     write('7. a      : gerak ke barat 1 langkah'),nl,
     write('8. Status : menampilkan status pemain'),nl.
+
+w :- 
+    \+init(_),
+    write('Sans, Game belum mulai').
+
+a :- 
+    \+init(_),
+    write('Sans, Game belum mulai').
+
+s :- 
+    \+init(_),
+    write('Sans, Game belum mulai').
+
+d :- 
+    \+init(_),
+    write('Sans, Game belum mulai').
