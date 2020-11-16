@@ -41,23 +41,23 @@ initFirst :-
     write('Hello '), write(Username), nl,
     repeat,
     write('Choose your job'), nl, nl,
-    write('1. Swordsman'), nl,
-    write('2. Archer'), nl,
-    write('3. Sorcerer'),
+    write('1. Hero'), nl,
+    write('2. Paladin'), nl,
+    write('3. Wizard'),
     write('Insert job: '),
     read(Jobstart), nl,
     job(ID,Jobstart,_,_,_,_,_),
     (
         ID =:= 1 ->
-            write ('You choose Swordsman, let’s explore the world')
+            write ('You choose Hero, let’s explore the world')
             ;
             (
                 ID =:= 2 ->
-                write ('You choose Archer, let’s explore the world')
+                write ('You choose Paladin, let’s explore the world')
                 ;
                 (
                     ID =:= 3 ->
-                    write ('You choose Sorcerer, let’s explore the world')
+                    write ('You choose Wizard, let’s explore the world')
                     ;
                 )
             )
