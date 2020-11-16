@@ -1,28 +1,19 @@
-:-dynamic(player/2).
-:-dynamic(player/3).
-:-dynamic(enemy/3).
-:-dynamic(enemy/4).
-:-dynamic(position/3).
+:- dynamic(inventory/10).            /* inventory(NamaTokemon) */
+:- dynamic(legendary/9).            /* legendary */
 
-init_player :-
-	make_player,
-	change_player_pos.
+maxInventory(6).
 
-init_enemy(N) :-
-	/* Banyak Enemy */
-	asserta(nbEnemy(N)),
-	NLama is N,
-	make_n_enemy(N),
-	change_n_enemy_pos(NLama).
+cekPanjang(Length) :-
+    findall(Name, inventory(_,Name,_,_,_,_,_,_,_,_), List),
+    length(List,Length).    
 
-make_player :-
-	asserta(player(health,100)),
-	asserta(player(armor,0)),
-	asserta(player(weapon,none)),
-	asserta(player(ammo,0)),
-	asserta(player(position,0,0)).
+isFull :-
+    cekPanjang(Length),
+    Length == 6.
 
-change_player_pos:-
-	get_random_position(X, Y),
-	retract(player(position, 0, 0)),
-	asserta(player(position, X, Y)).
+addMusuh(_) :-
+    cekPanjang(Length),
+    maxInventory(Max),
+    Length >= Max,
+    write('Maaf, sudah penuh'),
+    !,fail.
