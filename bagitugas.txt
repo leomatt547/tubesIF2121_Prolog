@@ -1,0 +1,4 @@
+Alvin: battle mechanism.pl, job.pl
+Chris:  levelling.pl, quest.pl
+leo: main.pl, player.pl
+Yahya: map.pl, command.pl
