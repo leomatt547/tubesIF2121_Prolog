@@ -24,3 +24,4 @@ s :-
 d :- 
     \+init(_),
     write('Sans, Game belum mulai').
+
