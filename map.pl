@@ -40,64 +40,65 @@ isBoss2(X,Y) :-
     X =:= A,
     Y =:= B.
 
+/*Fungsi untuk membuat Tembok Random*/
 generateTembok :-
     asserta(adaTembok(1)),
     lebar(L),
     panjang(J),
     NewJ is J-6,
     NewL is L-6,
-    random(3,NewJ,TempX1),
-    random(3,NewJ,TempX2),
-    random(3,NewJ,TempX3),
-    random(3,NewJ,TempX4),
-    random(3,NewJ,TempX5),
-    random(3,NewJ,TempX6),
-    random(3,NewJ,TempX7),
-    random(3,NewJ,TempX8),
-    random(3,NewL,TempY1),
-    random(3,NewL,TempY2),
-    random(3,NewL,TempY3),
-    random(3,NewL,TempY4),
-    random(3,NewL,TempY5),
-    random(3,NewL,TempY6),
-    random(3,NewL,TempY7),
-    random(3,NewL,TempY8),
-    asserta(tembok(TempX1,TempY1,TempX2,TempY2,TempX3,TempY3,TempX4,TempY4,TempX5,TempY5,TempX6,TempY6,TempX7,TempY7,TempX8,TempY8)).
+    random(3,NewJ,TX1),
+    random(3,NewJ,TX2),
+    random(3,NewJ,TX3),
+    random(3,NewJ,TX4),
+    random(3,NewJ,TX5),
+    random(3,NewJ,TX6),
+    random(3,NewJ,TX7),
+    random(3,NewJ,TX8),
+    random(3,NewL,TY1),
+    random(3,NewL,TY2),
+    random(3,NewL,TY3),
+    random(3,NewL,TY4),
+    random(3,NewL,TY5),
+    random(3,NewL,TY6),
+    random(3,NewL,TY7),
+    random(3,NewL,TY8),
+    asserta(tembok(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8)).
 
 isTembok(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
-    tembok(TempX1,TempY1,TempX2,TempY2,TempX3,TempY3,TempX4,TempY4,TempX5,TempY5,TempX6,TempY6,TempX7,TempY7,TempX8,TempY8),
+    tembok(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
     (
         (
-        X1 == TempX1,
-        Y1 == TempY1
+        X1 == TX1,
+        Y1 == TY1
         );
         (
-            X2 == TempX2,
-            Y2 == TempY2
+            X2 == TX2,
+            Y2 == TY2
         );
         (
-            X3 == TempX3,
-            Y3 == TempY3
+            X3 == TX3,
+            Y3 == TY3
         );
         (
-            X4 == TempX4,
-            Y4 == TempY4
+            X4 == TX4,
+            Y4 == TY4
         ); 
         (   
-            X5 == TempX5,
-            Y5 == TempY5
+            X5 == TX5,
+            Y5 == TY5
         );
         (
-            X6 == TempX6,
-            Y6 == TempY6
+            X6 == TX6,
+            Y6 == TY6
         );
         (   
-            X7 == TempX7,
-            Y7 == TempY7
+            X7 == TX7,
+            Y7 == TY7
         );
         (   
-            X8 == TempX8,
-            Y8 == TempY8
+            X8 == TX8,
+            Y8 == TY8
         )
     ).
 

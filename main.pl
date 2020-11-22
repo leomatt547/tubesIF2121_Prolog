@@ -6,7 +6,6 @@
 :- include('map.pl').
 :- include('player.pl').
 :- include('level.pl').
-:- include('battle.pl').
 
 title :-
     write('   ____  U _____ u _   _    ____     _   _               _   _ '),nl,
@@ -65,8 +64,8 @@ initFirst :-
             )
     ),
     do(ID), nl,
-    /*end_condition(ID),
-    status.*/
+    end_condition(ID),
+    status.
 
 end_condition(end).
 end_condition(X) :- 
@@ -96,12 +95,12 @@ start :-
     \+init(_),
     title,
     asserta(init(1)),
-    /*initBoss(100),
-    initBoss(101),*/
+    initBoss(100),
+    initBoss(101),
     initFirst,
     initPlayer,
     generateTembok,
-    /*initBossMap,*/
+    initBossMap,
     !.
 
 quit :-
