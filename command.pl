@@ -1,4 +1,4 @@
-:- dynamic(cure/1).
+:- dynamic(claim/1).
 
 help :-
     init(_),
@@ -293,13 +293,13 @@ d :-
     write('Game belum dimulai').
 
 listHealAll(ListNama) :-
-    findall(Name, inventory(_,Name,_,_,_,_,_,_,_,_), ListNama).
+    findall(Name, inventory(_,Name,_,_,_,_,_,_), ListNama).
 
 healAll([]).
 healAll([B|Y]) :-
-    retract(inventory(ID, B, Type, MaxHealth, Level,_, Element, Attack, Special, Exp)),
+    retract(inventory(ID, B, MaxHealth, Level,_, Element, Attack, Special)),
     NewHealth is MaxHealth,
-    asserta(inventory(ID, B, Type, MaxHealth, Level, NewHealth, Element, Attack, Special, Exp)),
+    asserta(inventory(ID, B, MaxHealth, Level, NewHealth, Element, Attack, Special)),
     healAll(Y).
 
 heal :-
@@ -310,7 +310,7 @@ heal :-
     listHealAll(ListNama),
     healAll(ListNama),
     write('Semua tokemon anda telah sembuh'),
-    retract(cure(_)),!.
+    retract(claim(_)),!.
 
 triggered :-
     random(1,100,L),

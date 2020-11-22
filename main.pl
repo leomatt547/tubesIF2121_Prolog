@@ -108,31 +108,32 @@ quit :-
     write('Dasar labil!'),!.
 
 quit :-
-    write('Good bye!!'), nl,
+    write('Bye!!'), nl,
     retract(positionX(_)),
     retract(positionY(_)),
     retract(lebar(_)),
     retract(panjang(_)),
     retract(tembok(_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_)),
-    forall(inventory(_, _, _, _, _, _, _, _, _, _), (
-        retract(inventory(_, _, _, _, _, _, _, _, _, _))
+    retract(claim(_)),
+    forall(inventory(_, _, _, _, _, _, _), (
+        retract(inventory(_, _, _, _, _, _,_))
 	)),
-    forall(enemy(_,_,_,_,_,_,_,_,_), (
-        retract(enemy(_,_,_,_,_,_,_,_,_))
+    forall(boss(_,_,_,_,_,_,_,_,_), (
+        retract(boss(_,_,_,_,_,_,_,_,_))
     )),
     (
-        (enemy1(_,_),enemy2(_,_))
-        -> retract(enemy1(_,_)),
-        retract(enemy2(_,_)),
+        (boss1(_,_),boss2(_,_))
+        -> retract(boss1(_,_)),
+        retract(boss2(_,_)),
         retract(player(_)),
         retract(init(_)),
         fail
         ; 
-        (enemy1(_,_),\+enemy2(_,_))
-        -> retract(enemy1(_,_)), fail
+        (boss1(_,_),\+boss2(_,_))
+        -> retract(boss1(_,_)), fail
         ;
-        (\+enemy1(_,_),enemy2(_,_))
-        -> retract(enemy2(_,_)),
+        (\+boss1(_,_),boss2(_,_))
+        -> retract(boss2(_,_)),
         retract(player(_)),
         retract(init(_)),
         fail
@@ -140,6 +141,7 @@ quit :-
         retract(player(_)),
         retract(init(_))
     ).
+
 
 save(_) :-
 	\+init(_),
@@ -179,11 +181,11 @@ writeEnemy2 :-
     \+ enemy2(_,_), !.
 
 writeTembok :-
-    tembok(TempX1,TempY1,TempX2,TempY2,TempX3,TempY3,TempX4,TempY4,TempX5,TempY5,TempX6,TempY6,TempX7,TempY7,TempX8,TempY8),
-    write('tembok('), write(TempX1), write(','), write(TempY1), write(','), write(TempX2), write(','), write(TempY2), write(','),
-    write(TempX3), write(','), write(TempY3), write(','), write(TempX4), write(','), write(TempY4), write(','),
-    write(TempX5), write(','), write(TempY5), write(','), write(TempX6), write(','), write(TempY6), write(','),
-    write(TempX7), write(','), write(TempY7), write(','), write(TempX8), write(','), write(TempY8), write(').'), nl, !.
+    tembok(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
+    write('tembok('), write(TX1), write(','), write(TY1), write(','), write(TX2), write(','), write(TY2), write(','),
+    write(TX3), write(','), write(TY3), write(','), write(TX4), write(','), write(TY4), write(','),
+    write(TX5), write(','), write(TY5), write(','), write(TX6), write(','), write(TY6), write(','),
+    write(TX7), write(','), write(TY7), write(','), write(TX8), write(','), write(TY8), write(').'), nl, !.
 
 writePosisiPlayer :-
     positionX(A),
@@ -192,14 +194,14 @@ writePosisiPlayer :-
     write('positionY('), write(B), write(').'), nl, !.
 
 writeInventory:-
-	\+inventory(_, _, _, _, _, _, _, _, _, _),
+	\+inventory(_, _, _, _, _, _, _, _),
 	!.
 
 writeInventory:-
-	forall(inventory(ID, Name, Type, MaxHealth, Level, Health, Element, Attack, Special, EXP),(
-		write('inventory('), write(ID), write(', '), write(Name), write(', '), write(Type), write(', '),
+	forall(inventory(ID, Name, MaxHP, Attack, Defense, Special),(
+		write('inventory('), write(ID), write(', '), write(Name), write(', '),
         write(MaxHealth), write(', '), write(Level), write(', '), write(Health), write(', '), 
-        write(Element), write(', '), write(Attack), write(', '), write(Special), write(', '), write(EXP), write(').'), nl
+        write(Element), write(', '), write(Attack), write(', '), write(Special), write(').'), nl
 	)), !.
 
 loadGame(_) :-

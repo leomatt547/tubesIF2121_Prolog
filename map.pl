@@ -26,7 +26,7 @@ isPlayer(X,Y) :-
     Y =:= B.
 
 isQuest(X,Y) :-
-    cure(_),
+    claim(_),
     X =:= 2,
     Y =:= 2.
 
@@ -192,7 +192,7 @@ initMap(X, Y) :-
     asserta(panjang(Y)).
 
 initPlayer :-
-    asserta(cure(1)),
+    asserta(claim(1)),
     asserta(positionX(1)),
     asserta(positionY(1)).
 
