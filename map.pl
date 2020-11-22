@@ -4,10 +4,10 @@
 :- dynamic(positionY/1).
 :- dynamic(tembok/16).
 :- dynamic(adaTembok/1).
-:- dynamic(enemy1/2).
-:- dynamic(enemy2/2).
+:- dynamic(boss1/2).
+:- dynamic(boss2/2).
 
-initEnemyMap :-
+initBossMap :-
     lebar(L),
     panjang(P),
     NewP is P-5,
@@ -16,8 +16,8 @@ initEnemyMap :-
     random(NewL,L,Y1),
     random(NewP,P,X2),
     random(NewL,L,Y2),
-    asserta(enemy1(X1,Y1)),
-    asserta(enemy2(X2,Y2)).
+    asserta(boss1(X1,Y1)),
+    asserta(boss2(X2,Y2)).
 
 isPlayer(X,Y) :-
     positionX(A),
@@ -30,13 +30,13 @@ isQuest(X,Y) :-
     X =:= 2,
     Y =:= 2.
 
-isEnemy1(X,Y) :-
-    enemy1(A,B),
+isBoss1(X,Y) :-
+    boss1(A,B),
     X =:= A,
     Y =:= B.
 
-isEnemy2(X,Y) :-
-    enemy2(A,B),
+isBoss2(X,Y) :-
+    boss2(A,B),
     X =:= A,
     Y =:= B.
 
@@ -136,7 +136,7 @@ printX(X,Y) :-
 
 printX(X,Y) :-
     isQuest(X,Y),
-    write('G'),
+    write('Q'),
     NextX is (X+1),
     printX(NextX,Y).
 
@@ -166,13 +166,13 @@ printX(X,Y) :-
     printX(NextX,Y).
 
 printX(X,Y) :-
-    isEnemy1(X,Y),
+    isBoss1(X,Y),
     write('L'),
     NextX is (X+1),
     printX(NextX,Y).
 
 printX(X,Y) :-
-    isEnemy2(X,Y),
+    isBoss2(X,Y),
     write('L'),
     NextX is (X+1),
     printX(NextX,Y).

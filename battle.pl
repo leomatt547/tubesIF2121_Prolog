@@ -10,7 +10,7 @@
 :- dynamic(isSkill/1).
 :- dynamic(temp/1).
 
-enemyTriggered :-  
+musuhTriggered :-  
     random(7, 30, ID),
     job(ID, Name, Type, MaxHealth, _, Element, Attack, Special),
     cekPanjang(Level),

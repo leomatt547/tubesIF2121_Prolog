@@ -1,4 +1,4 @@
-:- dynamic(quest/1).
+:- dynamic(cure/1).
 
 help :-
     init(_),
@@ -23,20 +23,35 @@ w :-
     \+isKiri(TempX,Next),
     \+isQuest(TempX,Next),
     \+isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next),
-    \+isEnemy1(TempX,Next),
-    \+isEnemy2(TempX,Next),
+    \+isBoss1(TempX,Next),
+    \+isBoss2(TempX,Next),
     triggered,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
-w :- 
+w :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TempX),
+    positionY(Temp),
+    Next is (Temp-1),
+    (
+        isAtas(TempX,Next);
+        isBawah(TempX,Next);
+        isKanan(TempX,Next);
+        isKiri(TempX,Next);
+        isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next)
+    ),
+    write('Ada Tembok'),!.
+
+w :-
     init(_),
     \+ isEnemyAlive(_),
     positionX(TempX),
     positionY(Temp),
     Next is (Temp-1),
     isQuest(TempX,Next),
-    write('Silahkan ambil Quest Anda'),
+    write('Anda sekarang berada di gym'),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -46,8 +61,8 @@ w :-
     positionX(TempX),
     positionY(Temp),
     Next is (Temp-1),
-    isEnemy1(TempX,Next),
-    enemyTriggered1,
+    isBoss1(TempX,Next),
+    legendaryTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -57,80 +72,14 @@ w :-
     positionX(TempX),
     positionY(Temp),
     Next is (Temp-1),
-    isEnemy2(TempX,Next),
-    enemyTriggered2,
+    isBoss2(TempX,Next),
+    legendaryTriggered2,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
-w :- 
+w :-
     \+init(_),
-    write('Sans, Game belum mulai').
-
-w :-
-    init(_),
-    \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    \+isAtas(Next,Temp),
-    \+isBawah(Next,Temp),
-    \+isKanan(Next,Temp),
-    \+isKiri(Next,Temp),
-    \+isQuest(Next,Temp),
-    \+isEnemy1(Next,Temp),
-    \+isEnemy2(Next,Temp),
-    \+isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp),
-    triggered,
-    retract(positionX(_)),
-    asserta(positionX(Next)),!.
-
-w :-
-    init(_),
-    \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    (
-        isAtas(Next,Temp);
-        isBawah(Next,Temp);
-        isKanan(Next,Temp);
-        isKiri(Next,Temp);
-        isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp)
-    ),
-    write('Ada Tembok'),!.
-
-w :-
-    init(_),
-    \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    isQuest(Next,Temp),
-    write('Anda sekarang berada di Quest'),
-    retract(positionX(_)),
-    asserta(positionX(Next)),!.
-
-w :-
-    init(_),
-    \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    isEnemy1(Next,Temp),
-    enemyTriggered1,
-    retract(positionX(_)),
-    asserta(positionX(Next)),!.
-
-w :-
-    init(_),
-    \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    isEnemy2(Next,Temp),
-    enemyTriggered2,
-    retract(positionX(_)),
-    asserta(positionX(Next)),!.
+    write('Game belum dimulai').
 
 a :-
     init(_),
@@ -143,8 +92,8 @@ a :-
     \+isKanan(Next,Temp),
     \+isKiri(Next,Temp),
     \+isQuest(Next,Temp),
-    \+isEnemy1(Next,Temp),
-    \+isEnemy2(Next,Temp),
+    \+isBoss1(Next,Temp),
+    \+isBoss2(Next,Temp),
     \+isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp),
     triggered,
     retract(positionX(_)),
@@ -172,7 +121,7 @@ a :-
     positionY(Temp),
     Next is (TempX-1),
     isQuest(Next,Temp),
-    write('Anda sekarang berada di Quest'),
+    write('Anda sekarang berada di gym'),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -182,8 +131,8 @@ a :-
     positionX(TempX),
     positionY(Temp),
     Next is (TempX-1),
-    isEnemy1(Next,Temp),
-    enemyTriggered1,
+    isBoss1(Next,Temp),
+    legendaryTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -193,8 +142,8 @@ a :-
     positionX(TempX),
     positionY(Temp),
     Next is (TempX-1),
-    isEnemy2(Next,Temp),
-    enemyTriggered2,
+    isBoss2(Next,Temp),
+    legendaryTriggered2,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -213,13 +162,13 @@ s :-
     \+isKanan(TempX,Next),
     \+isKiri(TempX,Next),
     \+isQuest(TempX,Next),
-    \+isEnemy1(TempX,Next),
-    \+isEnemy2(TempX,Next),
+    \+isBoss1(TempX,Next),
+    \+isBoss2(TempX,Next),
     \+isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next),
     triggered,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
-
+    
 s :- 
     init(_),
     \+ isEnemyAlive(_),
@@ -242,7 +191,7 @@ s :-
     positionY(Temp),
     Next is (Temp+1),
     isQuest(TempX,Next),
-    write('Anda sekarang berada di Quest'),
+    write('Anda sekarang berada di gym'),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -252,8 +201,8 @@ s :-
     positionX(TempX),
     positionY(Temp),
     Next is (Temp+1),
-    isEnemy1(TempX,Next),
-    enemyTriggered1,
+    isBoss1(TempX,Next),
+    legendaryTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -263,14 +212,15 @@ s :-
     positionX(TempX),
     positionY(Temp),
     Next is (Temp+1),
-    isEnemy2(TempX,Next),
-    enemyTriggered2,
+    isBoss2(TempX,Next),
+    legendaryTriggered2,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
 s :-
     \+init(_),
     write('Game belum dimulai').
+
 
 d :-
     init(_),
@@ -283,8 +233,8 @@ d :-
     \+isKanan(Next,Temp),
     \+isKiri(Next,Temp),
     \+isQuest(Next,Temp),
-    \+isEnemy1(Next,Temp),
-    \+isEnemy2(Next,Temp),
+    \+isBoss1(Next,Temp),
+    \+isBoss2(Next,Temp),
     \+isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp),
     triggered,
     retract(positionX(_)),
@@ -312,7 +262,7 @@ d :-
     positionY(Temp),
     Next is (TempX+1),
     isQuest(Next,Temp),
-    write('Anda sekarang berada di Quest'),
+    write('Anda sekarang berada di gym'),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -322,8 +272,8 @@ d :-
     positionX(TempX),
     positionY(Temp),
     Next is (TempX+1),
-    isEnemy1(Next,Temp),
-    enemyTriggered1,
+    isBoss1(Next,Temp),
+    legendaryTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -333,14 +283,34 @@ d :-
     positionX(TempX),
     positionY(Temp),
     Next is (TempX+1),
-    isEnemy2(Next,Temp),
-    enemyTriggered2,
+    isBoss2(Next,Temp),
+    legendaryTriggered2,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
-e :-
+d :-
     \+init(_),
     write('Game belum dimulai').
+
+listHealAll(ListNama) :-
+    findall(Name, inventory(_,Name,_,_,_,_,_,_,_,_), ListNama).
+
+healAll([]).
+healAll([B|Y]) :-
+    retract(inventory(ID, B, Type, MaxHealth, Level,_, Element, Attack, Special, Exp)),
+    NewHealth is MaxHealth,
+    asserta(inventory(ID, B, Type, MaxHealth, Level, NewHealth, Element, Attack, Special, Exp)),
+    healAll(Y).
+
+heal :-
+    init(_),
+    positionX(X),
+    positionY(Y),
+    isQuest(X,Y),
+    listHealAll(ListNama),
+    healAll(ListNama),
+    write('Semua tokemon anda telah sembuh'),
+    retract(cure(_)),!.
 
 triggered :-
     random(1,100,L),
@@ -353,6 +323,6 @@ triggered :-
 loop(1,_).
 loop(X,ID) :-
     X > 0,
-    naikLevelEnemy(ID),
+    levelUpEnemy(ID),
     M is X-1,
     loop(M,ID).

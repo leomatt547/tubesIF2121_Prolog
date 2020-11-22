@@ -1,6 +1,7 @@
-:- dynamic(inventory/10).  
+:- dynamic(inventory/10).      /* inventory(NamaTokemon) */
+:- dynamic(boss/7).            /* boss */
 
-maxInventory(100).
+maxInventory(10).
 
 cekPanjang(Length) :-
     findall(Name, inventory(_,Name,_,_,_,_,_,_,_,_), List),
@@ -8,67 +9,65 @@ cekPanjang(Length) :-
 
 isFull :-
     cekPanjang(Length),
-    Length == 100.
+    Length == 10.
 
 addItems(_) :-
     cekPanjang(Length),
     maxInventory(Max),
     Length >= Max,
-    write('Maaf, Inventory Sudah Penuh'),
+    write('Sudah Penuh'),
     !,fail.
 
 addItems(ID) :-
-    items(ID, Name, Type, MaxHP, Level, Element, Attack, Special),
-    HP is MaxHP,
+    job(ID, Name, Level, MaxHealth, Attack, Defense, Special),
+    Health is MaxHealth,
     Exp is 0,
-    asserta(inventory(ID, Name, Type, MaxHP, Level, HP, Element, Attack, Special, Exp)),!.
+    asserta(inventory(ID, Name, Type, MaxHealth, Level, Health, Attack, Special, Exp)),!.
 
 delItems(ID) :-
     \+inventory(ID,_,_,_,_,_,_,_,_,_),
-    write('Tidak ada item tersebut di inventory anda'),
+    write('Tidak ada pokemon tersebut di inventory anda'),
     !,fail.
 
 delItems(ID) :-
     retract(inventory(ID,_,_,_,_,_,_,_,_,_)),
     !.
 
-initEnemy(ID) :-
+initBoss(ID) :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special),
     Health is MaxHealth,
-    asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special)),!.
+    asserta(boss(ID, Name, Type, MaxHealth, Level, Health, Attack, Special)),!.
 
 makeListItems(ListNama,ListHealth,ListElement) :-
     findall(Name, inventory(_,Name,_,_,_,_,_,_,_,_), ListNama),
-    findall(Health, inventory(_,_,_,_,_,Health,_,_,_,_), ListHealth),
-    findall(Element, inventory(_,_,_,_,_,_,Element,_,_,_), ListElement).
+    findall(Health, inventory(_,_,_,_,_,Health,_,_,_,_), ListHealth).
 
-makeListEnemy(ListNama,ListHealth,ListElement) :-
-    findall(Name, enemy(_,Name,_,_,_,_,_,_,_), ListNama),
-    findall(Health, enemy(_,_,_,_,_,Health,_,_,_), ListHealth),
-    findall(Element, enemy(_,_,_,_,_,_,Element,_,_), ListElement).
+makeListBoss(ListNama,ListHealth,ListElement) :-
+    findall(Name, boss(_,Name,_,_,_,_,_,_,_), ListNama),
+    findall(Health, boss(_,_,_,_,_,Health,_,_,_), ListHealth).
 
-tempstatus([],[],[]).
-tempstatus([A|X],[B|Y],[C|Z]) :-
+stt([],[],[]).
+stt([A|X],[B|Y],[C|Z]) :-
     write(A),nl,
     write('Health: '),
     write(B),nl,
     write('Element: '),
     write(C),nl,nl,
-    tempstatus(X,Y,Z).
+    stt(X,Y,Z).
 
 status :-
     init(_),
     player(Username),
-    write('Username anda adalah '), write(Username), nl, nl,
-    makeListItems(ListNama,ListHealth),
+    write('Your username is '), write(Username), nl, nl,
+    makeListItems(ListNama,ListHealth,ListElement),
     write('Your Items'),nl,nl,
-    tempstatus(ListNama,ListHealth),
-    makeListEnemy(NamaLegend,HealthLegend,ElementLegend),
+    stt(ListNama,ListHealth,ListElement),
+    makeListBoss(NamaBoss,HealthBoss,ElementBoss),
     write('Your Final Enemy'),nl,nl,
-    tempstatus(NamaLegend,HealthLegend,ElementLegend).
+    stt(NamaBoss,HealthBoss,ElementBoss).
 
 statusInventory :-
     init(_),
-    makeListItems(ListNama,ListHealth),
+    makeListItems(ListNama,ListHealth,ListElement),
     write('Your Items:'),nl,nl,
-    tempstatus(ListNama,ListHealth).
+    stt(ListNama,ListHealth,ListElement).

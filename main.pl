@@ -44,12 +44,12 @@ initFirst :-
     write('Hello '), write(Username), nl,
     repeat,
     write('Choose your job'), nl, nl,
-    write('1. Hero'), nl,
-    write('2. Paladin'), nl,
-    write('3. Wizard'),
+    write('1. hero'), nl,
+    write('2. paladin'), nl,
+    write('3. wizard'),nl,
     write('Insert job: '),
     read(Jobstart), nl,
-    job(ID,Jobstart,_,_,_,_,_),
+    job(ID,Jobstart,_,_,_,_),
     (
         ID =:= 1 ->
             write('You choose Hero, let’s explore the world'),nl
@@ -65,13 +65,13 @@ initFirst :-
             )
     ),
     do(ID), nl,
-    end_condition(ID),
-    status.
+    /*end_condition(ID),
+    status.*/
 
 end_condition(end).
 end_condition(X) :- 
     have(X), !,
-    addJob(X),
+    addItems(X),
     random(15,30,Sizex),
     random(15,30,Sizey),
     initMap(Sizex, Sizey),
@@ -96,12 +96,12 @@ start :-
     \+init(_),
     title,
     asserta(init(1)),
-    initEnemy(100),
-    initEnemy(101),
+    /*initBoss(100),
+    initBoss(101),*/
     initFirst,
     initPlayer,
     generateTembok,
-    initEnemyMap, 
+    /*initBossMap,*/
     !.
 
 quit :-
