@@ -16,7 +16,7 @@ items(0,mecha_suit,0).
 items(0,plot_armor,0).
 
 /* Hero Only Weapons */
-items(1,longsword,1).
+items(1,longsword,0).
 items(1,excalibur,0).
 /* Hero Only Armors */
 items(1,iron_armor,0).

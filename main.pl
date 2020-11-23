@@ -49,29 +49,39 @@ initFirst :-
     write('3. wizard'),nl,
     write('Insert job: '),
     read(Jobstart), nl,
-    job(ID,Jobstart,_,_,_,_),
+    job(ID,Jobstart,_,_,_,_,_),
     (
         ID =:= 1 ->
-            write('You choose Hero, let’s explore the world'),nl
+            addItems(longsword),
+            addItems(excalibur),
+            addItems(iron_armor),
+            addItems(hero_suit),
+            write('You choose Hero, lets explore the world'),nl
             ;
             (
                 ID =:= 2 ->
-                write('You choose Paladin, let’s explore the world'),nl
+                addItems(spiked_shield),
+                addItems(paladin_shield),
+                addItems(silver_breastplate),
+                addItems(golden_suit),
+                write('You choose Paladin, lets explore the world'),nl
                 ;
                 (
                     ID =:= 3 ->
-                    write('You choose Wizard, let’s explore the world'),nl, nl
+                    addItems(crooked_wand),
+                    addItems(excelsior),
+                    addItems(red_robe),
+                    addItems(grand_robe),
+                    write('You choose Wizard, lets explore the world'),nl, nl
                 )
             )
     ),
     do(ID), nl,
-    end_condition(ID),
-    status.
+    end_condition(ID).
 
 end_condition(end).
 end_condition(X) :- 
     have(X), !,
-    addItems(X),
     random(15,30,Sizex),
     random(15,30,Sizey),
     initMap(Sizex, Sizey),
@@ -86,7 +96,7 @@ do(_) :- write('Hey jangan ngasal ya!').
 do(end).
 
 have(X) :-
-    X >= 3 ,!.
+    X =< 3 ,!.
 
 start :- 
     init(_),
@@ -96,7 +106,7 @@ start :-
     \+init(_),
     title,
     asserta(init(1)),
-    /*initBoss(100),*/
+    initBoss(100),
     initBoss(101),
     initFirst,
     initPlayer,

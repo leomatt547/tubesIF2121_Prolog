@@ -1,11 +1,11 @@
 :- dynamic(inventory/3).      /* inventory(NamaItems) */
-:- dynamic(boss/7).            /* boss */
+:- dynamic(boss/8).            /* boss */
 
 maxInventory(10).
 
 cekPanjang(Length) :-
     findall(Nama, inventory(_,Nama,_), List),
-    length(List,Length).    
+    length(List,Length).
 
 isFull :-
     cekPanjang(Length),
@@ -18,10 +18,10 @@ addItems(_) :-
     write('Sudah Penuh'),
     !,fail.
 
-addItems(ID) :-
-    items(ID, Nama, Quantity),
-    Quantity is Quantity+1,
-    asserta(inventory(ID, Nama, Quantity)),!.
+addItems(Nama) :-
+    items(_, Nama, TempQuantity),
+    Quantity is TempQuantity+1,
+    asserta(inventory(_, Nama, Quantity)),!.
 
 delItems(Nama) :-
     \+inventory(_,Nama,_),
@@ -29,22 +29,28 @@ delItems(Nama) :-
     !,fail.
 
 delItems(Nama) :-
-    inventory(ID, Nama, Quantity),
-    Quantity is Quantity-1,
-    inventory(ID, Nama, Quantity),!.
+    TempQuantity >= 1,
+    inventory(ID, Nama, TempQuantity),
+    Quantity is TempQuantity-1,
+    retract(inventory(ID, Nama, TempQuantity)),
+    asserta(inventory(ID, Nama, Quantity)),!.
+
+delItems(Nama) :-
+    TempQuantity >= 0,
+    retract(inventory(_, Nama, TempQuantity)),!.
 
 initBoss(ID) :-
-    job(ID, Name, MaxHealth, Attack, Defense, Special),
+    job(ID, Name, Level, MaxHealth, Attack, Defense, Special),
     Health is MaxHealth,
-    asserta(boss(ID, Name, MaxHealth, Health, Attack, Defense,Special)),!.
+    asserta(boss(ID, Name, Level, MaxHealth, Health, Attack, Defense,Special)),!.
 
 makeListItems(ListNama, ListQuantity) :-
     findall(Nama, inventory(_,Nama,_), ListNama),
     findall(Quantity, inventory(_,_,Quantity), ListQuantity).
 
 makeListBoss(ListNama,ListHealth) :-
-    findall(Name, boss(_,Name,_,_,_,_,_), ListNama),
-    findall(Health, boss(_,_,_,_,Health,_,_), ListHealth).
+    findall(Name, boss(_,Name,_,_,_,_,_,_), ListNama),
+    findall(Health, boss(_,_,_,_,Health,_,_,_), ListHealth).
 
 stt([],[]).
 stt([A|X],[B|Y]) :-
