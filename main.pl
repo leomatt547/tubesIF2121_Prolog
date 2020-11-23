@@ -116,8 +116,8 @@ quit :-
     retract(panjang(_)),
     retract(tembok(_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_)),
     retract(claim(_)),
-    forall(inventory(_, _, _, _, _, _, _), (
-        retract(inventory(_, _, _, _, _, _,_))
+    forall(inventory(_, _, _), (
+        retract(inventory(_, _, _))
 	)),
     forall(boss(_,_,_,_,_,_,_,_,_), (
         retract(boss(_,_,_,_,_,_,_,_,_))
@@ -195,14 +195,13 @@ writePosisiPlayer :-
     write('positionY('), write(B), write(').'), nl, !.
 
 writeInventory:-
-	\+inventory(_, _, _, _, _, _, _, _),
+	\+inventory(_, _, _),
 	!.
 
 writeInventory:-
-	forall(inventory(ID, Name, MaxHP, Attack, Defense, Special),(
-		write('inventory('), write(ID), write(', '), write(Name), write(', '),
-        write(MaxHealth), write(', '), write(Level), write(', '), write(Health), write(', '), 
-        write(Element), write(', '), write(Attack), write(', '), write(Special), write(').'), nl
+	forall(inventory(ID, Nama, Quantity),(
+		write('inventory('), write(ID), write(', '), write(Nama), write(', '),
+        write(Quantity), write(').'), nl
 	)), !.
 
 loadGame(_) :-

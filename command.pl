@@ -292,24 +292,13 @@ d :-
     \+init(_),
     write('Game belum dimulai').
 
-listHealAll(ListNama) :-
-    findall(Name, inventory(_,Name,_,_,_,_,_,_), ListNama).
 
-healAll([]).
-healAll([B|Y]) :-
-    retract(inventory(ID, B, MaxHealth, Level,_, Element, Attack, Special)),
-    NewHealth is MaxHealth,
-    asserta(inventory(ID, B, MaxHealth, Level, NewHealth, Element, Attack, Special)),
-    healAll(Y).
-
-heal :-
+claim :-
     init(_),
     positionX(X),
     positionY(Y),
     isQuest(X,Y),
-    listHealAll(ListNama),
-    healAll(ListNama),
-    write('Semua tokemon anda telah sembuh'),
+    write('Anda mendapatkan Gold dan Exp'),
     retract(claim(_)),!.
 
 triggered :-
