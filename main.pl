@@ -1,5 +1,6 @@
 :- dynamic(init/1).
 :- dynamic(player/1).
+:- dynamic(stage/1).
 
 :- include('command.pl').
 :- include('job.pl').
@@ -83,6 +84,8 @@ initFirst :-
 end_condition(end).
 end_condition(X) :- 
     have(X), !,
+    N is 1,
+    asserta(stage(N)),
     random(15,30,Sizex),
     random(15,30,Sizey),
     initMap(Sizex, Sizey),

@@ -124,8 +124,23 @@ printX(X,Y) :-
     write('X').
 
 printX(X,Y) :-
+    stage(1),
     isTembok(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
     write('X'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(2),
+    isTembok(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+    write('@'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(3),
+    isTembok(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+    write('#'),
     NextX is (X+1),
     printX(NextX,Y).
 
@@ -142,18 +157,49 @@ printX(X,Y) :-
     printX(NextX,Y).
 
 printX(X,Y) :-
+    stage(1),
     isBawah(X,Y),
     write('X'),
     NextX is (X+1),
     printX(NextX,Y).
 
 printX(X,Y) :-
+    stage(2),
+    isBawah(X,Y),
+    write('@'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(3),
+    isBawah(X,Y),
+    write('#'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(1),
     isKiri(X,Y),
     write('X'),
     NextX is (X+1),
     printX(NextX,Y).
 
 printX(X,Y) :-
+    stage(2),
+    isKiri(X,Y),
+    write('@'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(3),
+    isKiri(X,Y),
+    write('#'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(1),
     isKanan(X,Y),
     write('X'),nl,
     NextX is 0,
@@ -161,8 +207,39 @@ printX(X,Y) :-
     printX(NextX,NextY).
 
 printX(X,Y) :-
+    stage(2),
+    isKanan(X,Y),
+    write('@'),nl,
+    NextX is 0,
+    NextY is (Y+1),
+    printX(NextX,NextY).
+
+printX(X,Y) :-
+    stage(3),
+    isKanan(X,Y),
+    write('#'),nl,
+    NextX is 0,
+    NextY is (Y+1),
+    printX(NextX,NextY).
+
+printX(X,Y) :-
+    stage(1),
     isAtas(X,Y),
     write('X'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(2),
+    isAtas(X,Y),
+    write('@'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    stage(3),
+    isAtas(X,Y),
+    write('#'),
     NextX is (X+1),
     printX(NextX,Y).
 
@@ -197,5 +274,7 @@ initPlayer :-
 
 map :- 
     init(_),
+    stage(N),
+    write('Stage'), write(N), nl,
     adaTembok(_),
     printX(0,0),!.
