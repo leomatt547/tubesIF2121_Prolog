@@ -62,7 +62,6 @@ w :-
     positionY(T),
     Next is (T-1),
     isBoss1(TX,Next),
-    legendaryTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -73,7 +72,6 @@ w :-
     positionY(T),
     Next is (T-1),
     isBoss2(TX,Next),
-    legendaryTriggered2,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -132,7 +130,6 @@ a :-
     positionY(T),
     Next is (TX-1),
     isBoss1(Next,T),
-    legendaryTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -143,7 +140,6 @@ a :-
     positionY(T),
     Next is (TX-1),
     isBoss2(Next,T),
-    legendaryTriggered2,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -202,7 +198,6 @@ s :-
     positionY(T),
     Next is (T+1),
     isBoss1(TX,Next),
-    legendaryTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -213,7 +208,6 @@ s :-
     positionY(T),
     Next is (T+1),
     isBoss2(TX,Next),
-    legendaryTriggered2,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -273,7 +267,6 @@ d :-
     positionY(T),
     Next is (TX+1),
     isBoss1(Next,T),
-    legendaryTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -284,7 +277,6 @@ d :-
     positionY(T),
     Next is (TX+1),
     isBoss2(Next,T),
-    legendaryTriggered2,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
