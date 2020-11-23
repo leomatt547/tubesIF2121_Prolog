@@ -285,7 +285,7 @@ d :-
     write('Game belum dimulai').
 
 
-claim :-
+tukar :-
     init(_),
     positionX(X),
     positionY(Y),

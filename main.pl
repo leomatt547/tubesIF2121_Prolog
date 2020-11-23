@@ -7,6 +7,7 @@
 :- include('player.pl').
 :- include('level.pl').
 :- include('inventory.pl').
+:- include('battle.pl').
 
 title :-
     write('   ____  U _____ u _   _    ____     _   _               _   _ '),nl,
