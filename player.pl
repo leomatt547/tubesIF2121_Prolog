@@ -1,4 +1,4 @@
-:- dynamic(inventory/7).      /* inventory(NamaTokemon) */
+:- dynamic(inventory/7).      /* inventory(NamaItems) */
 :- dynamic(boss/7).            /* boss */
 
 maxInventory(10).

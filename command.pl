@@ -14,17 +14,17 @@ help :-
 w :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp-1),
-    \+isAtas(TempX,Next),
-    \+isBawah(TempX,Next),
-    \+isKanan(TempX,Next),
-    \+isKiri(TempX,Next),
-    \+isQuest(TempX,Next),
-    \+isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next),
-    \+isBoss1(TempX,Next),
-    \+isBoss2(TempX,Next),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
+    \+isAtas(TX,Next),
+    \+isBawah(TX,Next),
+    \+isKanan(TX,Next),
+    \+isKiri(TX,Next),
+    \+isQuest(TX,Next),
+    \+isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next),
+    \+isBoss1(TX,Next),
+    \+isBoss2(TX,Next),
     triggered,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -32,36 +32,36 @@ w :-
 w :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp-1),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
     (
-        isAtas(TempX,Next);
-        isBawah(TempX,Next);
-        isKanan(TempX,Next);
-        isKiri(TempX,Next);
-        isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next)
+        isAtas(TX,Next);
+        isBawah(TX,Next);
+        isKanan(TX,Next);
+        isKiri(TX,Next);
+        isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next)
     ),
     write('Ada Tembok'),!.
 
 w :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp-1),
-    isQuest(TempX,Next),
-    write('Anda sekarang berada di gym'),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
+    isQuest(TX,Next),
+    write('Silahkan claim bonus anda.'),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
 w :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp-1),
-    isBoss1(TempX,Next),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
+    isBoss1(TX,Next),
     legendaryTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -69,10 +69,10 @@ w :-
 w :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp-1),
-    isBoss2(TempX,Next),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
+    isBoss2(TX,Next),
     legendaryTriggered2,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -84,17 +84,17 @@ w :-
 a :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    \+isAtas(Next,Temp),
-    \+isBawah(Next,Temp),
-    \+isKanan(Next,Temp),
-    \+isKiri(Next,Temp),
-    \+isQuest(Next,Temp),
-    \+isBoss1(Next,Temp),
-    \+isBoss2(Next,Temp),
-    \+isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
+    \+isAtas(Next,T),
+    \+isBawah(Next,T),
+    \+isKanan(Next,T),
+    \+isKiri(Next,T),
+    \+isQuest(Next,T),
+    \+isBoss1(Next,T),
+    \+isBoss2(Next,T),
+    \+isTembok(Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T),
     triggered,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
@@ -102,36 +102,36 @@ a :-
 a :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
     (
-        isAtas(Next,Temp);
-        isBawah(Next,Temp);
-        isKanan(Next,Temp);
-        isKiri(Next,Temp);
-        isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp)
+        isAtas(Next,T);
+        isBawah(Next,T);
+        isKanan(Next,T);
+        isKiri(Next,T);
+        isTembok(Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T)
     ),
     write('Ada Tembok'),!.
 
 a :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    isQuest(Next,Temp),
-    write('Anda sekarang berada di gym'),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
+    isQuest(Next,T),
+    write('Silahkan claim bonus anda.'),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
 a :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    isBoss1(Next,Temp),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
+    isBoss1(Next,T),
     legendaryTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
@@ -139,10 +139,10 @@ a :-
 a :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX-1),
-    isBoss2(Next,Temp),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
+    isBoss2(Next,T),
     legendaryTriggered2,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
@@ -154,17 +154,17 @@ a :-
 s :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp+1),
-    \+isAtas(TempX,Next),
-    \+isBawah(TempX,Next),
-    \+isKanan(TempX,Next),
-    \+isKiri(TempX,Next),
-    \+isQuest(TempX,Next),
-    \+isBoss1(TempX,Next),
-    \+isBoss2(TempX,Next),
-    \+isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
+    \+isAtas(TX,Next),
+    \+isBawah(TX,Next),
+    \+isKanan(TX,Next),
+    \+isKiri(TX,Next),
+    \+isQuest(TX,Next),
+    \+isBoss1(TX,Next),
+    \+isBoss2(TX,Next),
+    \+isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next),
     triggered,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -172,36 +172,36 @@ s :-
 s :- 
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp+1),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
     (
-        isAtas(TempX,Next);
-        isBawah(TempX,Next);
-        isKanan(TempX,Next);
-        isKiri(TempX,Next);
-        isTembok(TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next,TempX,Next)
+        isAtas(TX,Next);
+        isBawah(TX,Next);
+        isKanan(TX,Next);
+        isKiri(TX,Next);
+        isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next)
     ),
     write('Ada Tembok'),!.
 
 s :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp+1),
-    isQuest(TempX,Next),
-    write('Anda sekarang berada di gym'),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
+    isQuest(TX,Next),
+    write('Silahkan claim bonus anda.'),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
 s :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp+1),
-    isBoss1(TempX,Next),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
+    isBoss1(TX,Next),
     legendaryTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -209,10 +209,10 @@ s :-
 s :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (Temp+1),
-    isBoss2(TempX,Next),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
+    isBoss2(TX,Next),
     legendaryTriggered2,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -225,17 +225,17 @@ s :-
 d :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX+1),
-    \+isAtas(Next,Temp),
-    \+isBawah(Next,Temp),
-    \+isKanan(Next,Temp),
-    \+isKiri(Next,Temp),
-    \+isQuest(Next,Temp),
-    \+isBoss1(Next,Temp),
-    \+isBoss2(Next,Temp),
-    \+isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
+    \+isAtas(Next,T),
+    \+isBawah(Next,T),
+    \+isKanan(Next,T),
+    \+isKiri(Next,T),
+    \+isQuest(Next,T),
+    \+isBoss1(Next,T),
+    \+isBoss2(Next,T),
+    \+isTembok(Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T),
     triggered,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
@@ -243,36 +243,36 @@ d :-
 d :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX+1),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
     (
-        isAtas(Next,Temp);
-        isBawah(Next,Temp);
-        isKanan(Next,Temp);
-        isKiri(Next,Temp);
-        isTembok(Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp,Next,Temp)
+        isAtas(Next,T);
+        isBawah(Next,T);
+        isKanan(Next,T);
+        isKiri(Next,T);
+        isTembok(Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T)
     ),
     write('Ada Tembok'),!.
 
 d :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX+1),
-    isQuest(Next,Temp),
-    write('Anda sekarang berada di gym'),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
+    isQuest(Next,T),
+    write('Silahkan claim bonus anda.'),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
 d :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX+1),
-    isBoss1(Next,Temp),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
+    isBoss1(Next,T),
     legendaryTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
@@ -280,10 +280,10 @@ d :-
 d :-
     init(_),
     \+ isEnemyAlive(_),
-    positionX(TempX),
-    positionY(Temp),
-    Next is (TempX+1),
-    isBoss2(Next,Temp),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
+    isBoss2(Next,T),
     legendaryTriggered2,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
