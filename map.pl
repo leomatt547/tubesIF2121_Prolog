@@ -191,11 +191,6 @@ initMap(X, Y) :-
     asserta(lebar(X)),
     asserta(panjang(Y)).
 
-initPlayer :-
-    asserta(claim(1)),
-    asserta(positionX(1)),
-    asserta(positionY(1)).
-
 map :- 
     init(_),
     adaTembok(_),

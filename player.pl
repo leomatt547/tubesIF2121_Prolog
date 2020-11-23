@@ -18,8 +18,8 @@ addItems(_) :-
     write('Sudah Penuh'),
     !,fail.
 
-addItems(Nama) :-
-    inventory(ID, Nama, Quantity),
+addItems(ID) :-
+    items(ID, Nama, Quantity),
     Quantity is Quantity+1,
     asserta(inventory(ID, Nama, Quantity)),!.
 
@@ -31,20 +31,20 @@ delItems(Nama) :-
 delItems(Nama) :-
     inventory(ID, Nama, Quantity),
     Quantity is Quantity-1,
-    asserta(inventory(ID, Nama, Quantity)),!.
-    !.
+    inventory(ID, Nama, Quantity),!.
 
 initBoss(ID) :-
-    job(ID, Name, Level, MaxHealth, Attack, Defense, Special),
+    job(ID, Name, MaxHealth, Attack, Defense, Special),
     Health is MaxHealth,
-    asserta(boss(ID, Name, MaxHealth, Level, Health, Attack, Special)),!.
+    asserta(boss(ID, Name, MaxHealth, Health, Attack, Defense,Special)),!.
 
-makeListItems(ListNama,ListHealth) :-
-    findall(Name, inventory(_,Nama,_), ListNama),
+makeListItems(ListNama, ListQuantity) :-
+    findall(Nama, inventory(_,Nama,_), ListNama),
+    findall(Quantity, inventory(_,_,Quantity), ListQuantity).
 
 makeListBoss(ListNama,ListHealth) :-
-    findall(Name, boss(_,Name,_,_,_,_,_,_,_), ListNama),
-    findall(Health, boss(_,_,_,_,_,Health,_,_,_), ListHealth).
+    findall(Name, boss(_,Name,_,_,_,_,_), ListNama),
+    findall(Health, boss(_,_,_,_,Health,_,_), ListHealth).
 
 stt([],[]).
 stt([A|X],[B|Y]) :-
@@ -53,19 +53,26 @@ stt([A|X],[B|Y]) :-
     write(B),nl,nl,
     stt(X,Y).
 
+stt2([],[]).
+stt2([A|X],[B|Y]) :-
+    write(A),nl,
+    write('Quantity: '),
+    write(B),nl,nl,
+    stt2(X,Y).
+
 status :-
     init(_),
     player(Username),
     write('Username Anda adalah '), write(Username), nl, nl,
-    makeListItems(ListNama,ListHealth),
+    makeListItems(ListNama,ListQuantity),
     write('Item Anda'),nl,nl,
-    stt(ListNama,ListHealth),
+    stt2(ListNama,ListQuantity),
     makeListBoss(NamaBoss,HealthBoss),
-    write('Mush Terakhirmu:'),nl,nl,
+    write('Musuh Terakhirmu:'),nl,nl,
     stt(NamaBoss,HealthBoss).
 
 statusInventory :-
     init(_),
-    makeListItems(ListNama,ListHealth),
-    write('Your Items:'),nl,nl,
-    stt(ListNama,ListHealth).
+    makeListItems(ListNama,ListQuantity),
+    write('Item Anda'),nl,nl,
+    stt2(ListNama,ListQuantity).

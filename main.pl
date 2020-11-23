@@ -86,7 +86,7 @@ do(_) :- write('Hey jangan ngasal ya!').
 do(end).
 
 have(X) :-
-    X =< 9, !.
+    X >= 3 ,!.
 
 start :- 
     init(_),
@@ -96,7 +96,7 @@ start :-
     \+init(_),
     title,
     asserta(init(1)),
-    initBoss(100),
+    /*initBoss(100),*/
     initBoss(101),
     initFirst,
     initPlayer,
@@ -119,8 +119,8 @@ quit :-
     forall(inventory(_, _, _), (
         retract(inventory(_, _, _))
 	)),
-    forall(boss(_,_,_,_,_,_,_,_,_), (
-        retract(boss(_,_,_,_,_,_,_,_,_))
+    forall(boss(_,_,_,_,_,_,_), (
+        retract(boss(_,_,_,_,_,_,_))
     )),
     (
         (boss1(_,_),boss2(_,_))
@@ -232,5 +232,4 @@ readFileLines(Stream,[]) :-
 readFileLines(Stream,[X|L]) :-
     \+ at_end_of_stream(Stream),
     read(Stream,X),
-    readFileLines(Stream,L).
     readFileLines(Stream,L).
