@@ -1,12 +1,12 @@
 levelUp(ID) :-
-    job(ID, Name, Level, MaxHealth, _, Attack, _, Special,_),
+    myjob(ID, Name, Level, MaxHealth, _, Attack, _, Special,_),
     TempLevel is (Level+1),
     TempMaxHealth is (MaxHealth + 100),
     TempHealth is TempMaxHealth,
     TempAttack is (Attack + 15),
     TempSpecial is (Special + 15),
-    retract(job(ID,_,Level,_,_,_,_,_,_)),
-    asserta(job(ID, Name, TempLevel, TempMaxHealth, TempHealth, TempAttack,_, TempSpecial)).
+    retract(myjob(ID,_,Level,_,_,_,_,_,_)),
+    asserta(myjob(ID, Name, TempLevel, TempMaxHealth, TempHealth, TempAttack,_, TempSpecial)).
     
 levelUpEnemy(ID) :-
     enemy(ID, Name, Level, MaxHealth, _, Attack, _, Special),

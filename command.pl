@@ -1,4 +1,5 @@
-:- dynamic(claim/1).
+:- dynamic(claim/3).
+:- dynamic(gold/1).
 
 help :-
     init(_),
@@ -286,12 +287,22 @@ d :-
 
 
 tukar :-
+    claim(satu,dua,tiga),
+    satu >= 1, dua >= 1, tiga >= 1,
     init(_),
     positionX(X),
     positionY(Y),
     isQuest(X,Y),
+    gold(Uang),
+    TempUang is Uang+100,
+    retract(gold(Uang)),
+    asserta(gold(TempUang)),
+    myjob(_,_,_,_,_,_,_,_,Exp),
+    TempExp is TempExp+50,
+    retract(myjob(_,_,_,_,_,_,_,_,Exp)),
+    asserta(myjob(_,_,_,_,_,_,_,_,TempExp)),
     write('Anda mendapatkan Gold dan Exp'),
-    retract(claim(_)),!.
+    retract(claim(_,_,_)),!.
 
 triggered :-
     random(99,100,L),

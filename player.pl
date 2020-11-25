@@ -30,14 +30,14 @@ delItems(Nama) :-
 
 delItems(Nama) :-
     inventory(ID, Nama, TempQuantity,_),
-    TempQuantity >= 1,
+    TempQuantity > 1,
     Quantity is TempQuantity-1,
     retract(inventory(ID, Nama, TempQuantity,_)),
     asserta(inventory(ID, Nama, Quantity,_)),!.
 
 delItems(Nama) :-
     inventory(_, Nama, TempQuantity,_),
-    TempQuantity >= 0,
+    TempQuantity =:= 1,
     retract(inventory(_, Nama, TempQuantity,_)),!.
 
 initBoss(ID) :-

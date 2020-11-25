@@ -26,7 +26,7 @@ isPlayer(X,Y) :-
     Y =:= B.
 
 isQuest(X,Y) :-
-    claim(_),
+    claim(_,_,_),
     X =:= 2,
     Y =:= 2.
 
