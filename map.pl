@@ -300,7 +300,21 @@ map :-
     legenda,!.
 
 legenda :- 
-    write('X = tembok'),nl,
+    stage(N),
+    (
+        N =:= 1 ->
+        write('X = tembok'),nl
+        ;
+        (
+            N =:= 2 ->
+            write('@ = tembok'),nl
+            ;
+            (
+                N =:= 2 ->
+                write('# = tembok'),nl
+            )
+        )
+    ),
     write('- = rumput'),nl,
     write('Q = quest'),nl,
     write('S = shop'),nl,!.
