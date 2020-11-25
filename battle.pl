@@ -135,13 +135,15 @@ pick(X) :-
     isEnemyAlive(_),
     isFight(_),
     \+ isPick(_),
-    myjob(_, Nama, _, MaxHealth,_, Attack, Defense,_,_),
+    myjob(_, Nama, _, MaxHealth,Health, Attack, Defense,_,_),
     inventory(_,X,_,Status),
     (
         /*Pick Health*/
         Status =:= 1 ->
         Health2 is MaxHealth,
-        asserta(myjob(_,Nama,_,MaxHealth, Health2,_,_,_,_)),
+        Attack2 is Attack,
+        Defense2 is Defense,
+        asserta(myjob(_,Nama,_,MaxHealth, Health2,Attack2,Defense2,_,_)),
         
         write('Kamu memilih '), write(X), write(' untuk menyembuhkan dirimu '), nl
         ;
@@ -149,14 +151,19 @@ pick(X) :-
             /*Pick Armor*/
             Status =:= 2 ->
             Defense2 is Defense+10,
-            asserta(myjob(_, Nama, _,_,_,_,Defense2,_,_)),
+            Attack2 is Attack,
+            Health2 is Health,
+            Defense2 is Defense,
+            asserta(myjob(_, Nama, _,_,Health2,Attack2,Defense2,_,_)),
             write('Kamu memilih '), write(X), write(' untuk defense dirimu '), nl
             ;
             (
                 /*Pick Weapon*/
                 Status =:= 3 ->
                 Attack2 is Attack+10,
-                asserta(myjob(_, Nama,_,_,_,Attack2,_,_,_)),
+                Health2 is Health,
+                Defense2 is Defense,
+                asserta(myjob(_, Nama,_,_,Health2,Attack2,Defense2,_,_)),
                 write('Kamu memilih '), write(X), write(' untuk attack musuh '), nl, nl
             )
         )
@@ -202,7 +209,7 @@ cont :-
 
 /*Attack normal*/
 attackComment  :-
-    enemy(_, EnemyName,_, _,EnemyHealth, _, _, _,_),
+    enemy(ID, EnemyName,_, _,EnemyHealth, _, _, _,_),
     EnemyHealth > 0,
     write('Health '), write(EnemyName), write(' tersisa '), write(EnemyHealth), nl,
     write('Sekarang giliran musuh!'), nl,
@@ -214,6 +221,7 @@ attackComment  :-
 attackComment :-
     enemy(ID, EnemyName,_, _,EnemyHealth, _, _, _,_),
     write(EnemyName), write(' mati!'), nl,
+    EnemyHealth =< 0,
     (
         ID =:= 4 ->
         claim(tambah,_,_),
@@ -327,13 +335,13 @@ enemyAttack :-
     retract(myjob(ID, Nama, Level, MaxHealth,_, Attack, Defense, Special,Exp)),
     asserta(myjob(ID, Nama, Level, MaxHealth,NewMyHealth, Attack, Defense, Special,Exp)),
     write(NamaEnemy), write(' sudah attack!'), nl,
-    enemyattackComment,
+    enemyAttackComment,
     !.
 
 /*Enemy attack comment*/
 enemyAttackComment :-
     retract(nyawa(_)),
-    myjob(_, Nama, _, _, _, MyHealth, _, _, _, _),
+    myjob(_, Nama, _, _, MyHealth, _, _, _, _),
     H is MyHealth,
     (
         H > 0 ->
@@ -350,7 +358,7 @@ enemyAttackComment :-
     !.
 
 /*enemyAttackComment :-
-    myjob(_, Nama, _, _, _, MyHealth, _, _, _, _),
+    myjob(_, Nama, _, _, _, MyHealth, _, _, _),
     H is MyHealth,
     (
         H =< 0 ->
