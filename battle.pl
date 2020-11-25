@@ -31,7 +31,7 @@ bossTriggered1 :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
-    write('Kamu bertemu Boss 1'), write(Name), write('!!!'), nl,nl,
+    write('Kamu bertemu Boss 1 :'), write(Name), write('!!!'), nl,nl,
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -40,7 +40,7 @@ bossTriggered2 :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
-    write('Kamu bertemu Boss 2'), write(Name), write('!!!'), nl,nl,
+    write('Kamu bertemu Boss 2 :'), write(Name), write('!!!'), nl,nl,
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -49,7 +49,7 @@ bossTriggered3 :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
-    write('Kamu bertemu Boss 3'), write(Name), write('!!!'), nl,nl,
+    write('Kamu bertemu Boss 3 :'), write(Name), write('!!!'), nl,nl,
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -106,6 +106,13 @@ pick(_) :-
 pick(_) :-
     \+isFight(_),
     write('Yakin pakai tangan kosong?'),nl,
+    !.
+
+/*BOSS DILAWAN PADAHAL MUSUH KECIL BELOM DILAWAN*/
+pick(_) :-
+    isFight(_),
+    \+myjob(_,_,_,_,_,_,_,_,_),
+    write('Sok jagoan lawan boss langsung?'),nl,
     !.
 
 /*Ambil item double*/
@@ -179,6 +186,7 @@ fight :-
     asserta(isFight(1)),
     isEnemyAlive(_),
     statusInventory,
+    write('Ketik pick(barangnya). --> Contoh: pick(pedang).'),nl,nl,
     !.
 
 /*Ambil armor lagi*/
@@ -267,7 +275,8 @@ attackComment :-
                             retract(stage(Temp)),
                             TempStage is Temp+1,
                             assert(stage(TempStage)),
-                            write('Anda telah mengalahkan bos'),write(EnemyName),nl,nl
+                            write('Anda telah mengalahkan bos'),write(EnemyName),nl,nl,
+                            win
                         )
                     )
                 )
@@ -275,35 +284,6 @@ attackComment :-
         )
     ),
     markLevelUp(B,Level,TempExp),!.
-
-/*Boss*/
-boss :-
-    enemyTokemon(ID, _, _, _, _, _, _, _, _),
-    positionX(X),
-    positionY(Y),
-    (
-        isBoss1(X,Y) 
-        -> 
-            (
-                retract(boss1(_,_)), retract(boss(ID,_,_,_,_,_,_,_,_))
-            )
-        ; 
-            (
-                retract(boss2(_,_)), retract(boss(ID,_,_,_,_,_,_,_,_))
-            )
-    ),
-    (
-        (\+boss1(_,_),\+boss2(_,_))
-        -> win
-        ; 
-        (
-            retract(isEnemyAlive(_)),
-            retract(isFight(_)),
-            retract(isPick(_)),
-            retract(isRun(_))
-        )
-    ),
-    !.
 
 /*Attack padahal gaada musuh*/
 attack :-
