@@ -441,7 +441,8 @@ gacha :-
             addItem(ID),
             inventory(ID,Nama,_,_),
             retract(gold(Uang)),
-            asserta(gold(Uang-100)),
+            TempUang is (Uang-100), 
+            asserta(gold(TempUang)),
             write('Selamat! Anda Mendapatkan Items: '), write(Nama), nl
             ;
             (
@@ -489,7 +490,8 @@ shop :-
         addItem(ID),
         inventory(ID,Nama,_,_),
         retract(gold(Uang)),
-        asserta(gold(Uang-100)),
+        TempUang is (Uang-100), 
+        asserta(gold(TempUang)),
         write('Selamat, Anda mendapatkan '),write(Nama),nl
         ;
         (
@@ -497,7 +499,8 @@ shop :-
             addItem(ID),
             inventory(ID,Nama,_,_),
             retract(gold(Uang)),
-            asserta(gold(Uang-100)),
+            TempUang is (Uang-100), 
+            asserta(gold(TempUang)),
             write('Selamat, Anda mendapatkan '),write(Nama),nl   
             ;
             (
@@ -505,7 +508,8 @@ shop :-
                 addItem(ID),
                 inventory(ID,Nama,_,_),
                 retract(gold(Uang)),
-                asserta(gold(Uang-100)),
+                TempUang is (Uang-100), 
+                asserta(gold(TempUang)),
                 write('Selamat, Anda mendapatkan '),write(Nama),nl
             )
         )

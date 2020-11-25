@@ -41,7 +41,7 @@ title :-
 
 initFirst :-
     write('Welcome to Genshin Asik.'), nl,
-    write('Input name here?'), nl,
+    write('Masukkan nama dengan awalan huruf kecil:'), nl,
     read(Username),
     asserta(player(Username)), nl,
     write('Hello '), write(Username), nl,
@@ -91,7 +91,7 @@ end_condition(X) :-
     random(15,30,Sizex),
     random(15,30,Sizey),
     initMap(Sizex, Sizey),
-    Uang is 100,
+    Uang is 500,
     asserta(gold(Uang)),
     player(Username),
     write('Information'), nl,

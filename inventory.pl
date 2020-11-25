@@ -1,6 +1,6 @@
-:- dynamic(items/2).
+:- dynamic(items/4).
 
-/* items(jobID,namaItem,quantity)
+/* items(jobID,namaItem,quantity, Status)
 JobID 1 = health
 JobID 2 = armor
 JobID 3 = weapon
@@ -37,3 +37,4 @@ items(0,excelsior,0,3).
 /* Wizard Only Armors */
 items(0,red_robe,0,2).
 items(0,grand_robe,0,2).
+

@@ -203,80 +203,86 @@ cont :-
 /*Giliran Musuh*/
 attackComment :-
     enemy(_, EnemyName, _, _,EnemyHealth, _, _, _,_),
-    EnemyHealth > 0,
-    write('Health '), write(EnemyName), write(' tersisa '), write(EnemyHealth), nl,
-    write('Sekarang giliran musuh!'), nl,
-    write('...'), nl,
-    sleep(1),
-    enemyAttack,
+    H is EnemyHealth,
+    (
+        H > 0 ->
+        write('Health '), write(EnemyName), write(' tersisa '), write(H), nl,
+        write('Sekarang giliran musuh!'), nl,
+        write('...'), nl,
+        sleep(1),
+        enemyAttack 
+    ),
     !.
 
 /*Menang Lawan Musuh*/
 attackComment :-
     enemy(ID, EnemyName,_, _,EnemyHealth, _, _, _,_),
     myjob(B, Nama,Level,_,_,_,_,_,_),
-    EnemyHealth =< 0,
-    write(EnemyName), write(' mati!'), nl,
+    H is EnemyHealth,
     (
-        ID =:= 4 ->
-        claim(tambah,_,_),
-        temptambah is tambah+1,
-        retract(claim(tambah,_,_)),
-        asserta(claim(temptambah,_,_)),
-        retract(myjob(_,_,_,_,_,_,_,_,Exp)),
-        TempExp is Exp+200,
-        asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp))
-        ;
+        H =< 0 ->
+        write(EnemyName), write(' mati!'), nl,
         (
-            ID =:= 5 ->
-            claim(_,tambah,_),
+            ID =:= 4 ->
+            claim(tambah,_,_),
             temptambah is tambah+1,
-            retract(claim(_,tambah,_)),
-            asserta(claim(_,temptambah,_)),
-            retract(myjob(_,_,_,_,_,_,_,Exp)),
+            retract(claim(tambah,_,_)),
+            asserta(claim(temptambah,_,_)),
+            retract(myjob(_,_,_,_,_,_,_,_,Exp)),
             TempExp is Exp+200,
             asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp))
             ;
             (
-                ID =:= 6 ->
-                claim(_,_,tambah),
+                ID =:= 5 ->
+                claim(_,tambah,_),
                 temptambah is tambah+1,
-                asserta(claim(_,_,temptambah)),
-                retract(claim(_,_,tambah)),
-                retract(myjob(_,_,_,_,_,_,_,_,Exp)),
+                retract(claim(_,tambah,_)),
+                asserta(claim(_,temptambah,_)),
+                retract(myjob(_,_,_,_,_,_,_,Exp)),
                 TempExp is Exp+200,
                 asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp))
                 ;
                 (
-                    ID =:= 100 ->
+                    ID =:= 6 ->
+                    claim(_,_,tambah),
+                    temptambah is tambah+1,
+                    asserta(claim(_,_,temptambah)),
+                    retract(claim(_,_,tambah)),
                     retract(myjob(_,_,_,_,_,_,_,_,Exp)),
-                    TempExp is Exp+500,
-                    asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp)),
-                    retract(stage(Temp)),
-                    TempStage is Temp+1,
-                    assert(stage(TempStage)),
-                    write('Anda telah mengalahkan bos'),write(EnemyName),nl,nl
+                    TempExp is Exp+200,
+                    asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp))
                     ;
                     (
-                        ID =:= 101 ->
+                        ID =:= 100 ->
                         retract(myjob(_,_,_,_,_,_,_,_,Exp)),
                         TempExp is Exp+500,
                         asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp)),
                         retract(stage(Temp)),
                         TempStage is Temp+1,
                         assert(stage(TempStage)),
-                        write('Anda telah mengalahkan bos'), write(EnemyName),nl,nl
+                        write('Anda telah mengalahkan bos'),write(EnemyName),nl,nl
                         ;
                         (
-                            ID =:= 102 ->
+                            ID =:= 101 ->
                             retract(myjob(_,_,_,_,_,_,_,_,Exp)),
                             TempExp is Exp+500,
                             asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp)),
                             retract(stage(Temp)),
                             TempStage is Temp+1,
                             assert(stage(TempStage)),
-                            write('Anda telah mengalahkan bos'),write(EnemyName),nl,nl,
-                            win
+                            write('Anda telah mengalahkan bos'), write(EnemyName),nl,nl
+                            ;
+                            (
+                                ID =:= 102 ->
+                                retract(myjob(_,_,_,_,_,_,_,_,Exp)),
+                                TempExp is Exp+500,
+                                asserta(myjob(_, Nama,_,_,_,_,_,_,TempExp)),
+                                retract(stage(Temp)),
+                                TempStage is Temp+1,
+                                assert(stage(TempStage)),
+                                write('Anda telah mengalahkan bos'),write(EnemyName),nl,nl,
+                                win
+                            )
                         )
                     )
                 )
@@ -303,6 +309,7 @@ attack :-
     isEnemyAlive(_),
     myjob(_, Nama, _,_,_,MyAttack,_,_,_),
     enemy(ID, NamaEnemy, _,_,EnemyHealth,_,_,_,_),
+    NewEnemyHealth is (EnemyHealth-MyAttack),
     retract(enemy(ID, NamaEnemy, Level, MaxHealth,_, Attack, Defense, Special,Exp)),
     asserta(enemy(ID, NamaEnemy, Level, MaxHealth,EnemyHealth - MyAttack, Attack, Defense, Special,Exp)),
     write(Nama), write(' sudah attack!'), nl,
@@ -323,16 +330,22 @@ enemyAttack :-
 /*Enemy attack comment*/
 enemyAttackComment :-
     myjob(_, Nama, _, _, _, MyHealth, _, _, _, _),
-    MyHealth >= 0,
-    write('Health '), write(Nama), write(' Anda tersisa '), write(MyHealth),
+    H is MyHealth,
+    (
+        H > 0 ->
+        write('Health '), write(Nama), write(' Anda tersisa '), write(H)
+    ),
     !.
 
 enemyAttackComment :-
     myjob(_, Nama, _, _, _, MyHealth, _, _, _, _),
-    MyHealth =< 0,
-    retract(myjob(_,_,_,_,_,_,_,_,_)),
-    retract(enemy(_,_,_,_,_,_,_,_,_)),
-    write('Health'), write(Nama),('mu sudah habis!'),nl,
+    H is MyHealth,
+    (
+        H =< 0 ->
+        retract(myjob(_,_,_,_,_,_,_,_,_)),
+        retract(enemy(_,_,_,_,_,_,_,_,_)),
+        write('Health '), write(Nama),('mu sudah habis!'),nl
+    ),
     lose.
 
 win :-
