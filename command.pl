@@ -26,6 +26,7 @@ w :-
     \+isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next),
     \+isBoss1(TX,Next),
     \+isBoss2(TX,Next),
+    \+isBoss3(TX,Next),
     triggered,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
@@ -63,6 +64,7 @@ w :-
     positionY(T),
     Next is (T-1),
     isBoss1(TX,Next),
+    bossTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -73,6 +75,18 @@ w :-
     positionY(T),
     Next is (T-1),
     isBoss2(TX,Next),
+    bossTriggered2,
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
+
+w :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
+    isBoss3(TX,Next),
+    bossTriggered3,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -93,6 +107,7 @@ a :-
     \+isQuest(Next,T),
     \+isBoss1(Next,T),
     \+isBoss2(Next,T),
+    \+isBoss3(Next,T),
     \+isTembok(Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T),
     triggered,
     retract(positionX(_)),
@@ -131,6 +146,7 @@ a :-
     positionY(T),
     Next is (TX-1),
     isBoss1(Next,T),
+    bossTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -141,6 +157,18 @@ a :-
     positionY(T),
     Next is (TX-1),
     isBoss2(Next,T),
+    bossTriggered2,
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+a :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
+    isBoss3(Next,T),
+    bossTriggered3,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -161,6 +189,7 @@ s :-
     \+isQuest(TX,Next),
     \+isBoss1(TX,Next),
     \+isBoss2(TX,Next),
+    \+isBoss3(TX,Next),
     \+isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next),
     triggered,
     retract(positionY(_)),
@@ -199,6 +228,7 @@ s :-
     positionY(T),
     Next is (T+1),
     isBoss1(TX,Next),
+    bossTriggered1,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -209,6 +239,18 @@ s :-
     positionY(T),
     Next is (T+1),
     isBoss2(TX,Next),
+    bossTriggered2,
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
+
+s :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
+    isBoss3(TX,Next),
+    bossTriggered3,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -230,6 +272,7 @@ d :-
     \+isQuest(Next,T),
     \+isBoss1(Next,T),
     \+isBoss2(Next,T),
+    \+isBoss3(Next,T),
     \+isTembok(Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T,Next,T),
     triggered,
     retract(positionX(_)),
@@ -268,6 +311,7 @@ d :-
     positionY(T),
     Next is (TX+1),
     isBoss1(Next,T),
+    bossTriggered1,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -278,6 +322,18 @@ d :-
     positionY(T),
     Next is (TX+1),
     isBoss2(Next,T),
+    bossTriggered2,
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+d :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
+    isBoss3(Next,T),
+    bossTriggered3,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -305,7 +361,7 @@ tukar :-
     retract(claim(_,_,_)),!.
 
 triggered :-
-    random(1,100,L),
+    random(81,100,L),
     (
         L >= 80
         -> enemyTriggered

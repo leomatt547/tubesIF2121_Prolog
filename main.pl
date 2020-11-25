@@ -1,6 +1,7 @@
 :- dynamic(init/1).
 :- dynamic(player/1).
 :- dynamic(stage/1).
+:- dynamic(karakter/1).
 
 :- include('command.pl').
 :- include('job.pl').
@@ -86,6 +87,7 @@ end_condition(X) :-
     have(X), !,
     N is 1,
     asserta(stage(N)),
+    asserta(karakter(X)),
     random(15,30,Sizex),
     random(15,30,Sizey),
     initMap(Sizex, Sizey),
@@ -112,6 +114,7 @@ start :-
     asserta(init(1)),
     initBoss(100),
     initBoss(101),
+    initBoss(102),
     initFirst,
     initPlayer,
     generateTembok,

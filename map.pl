@@ -6,6 +6,7 @@
 :- dynamic(adaTembok/1).
 :- dynamic(boss1/2).
 :- dynamic(boss2/2).
+:- dynamic(boss3/2).
 
 initBossMap :-
     lebar(L),
@@ -16,8 +17,12 @@ initBossMap :-
     random(NewL,L,Y1),
     random(NewP,P,X2),
     random(NewL,L,Y2),
+    random(NewP,P,X3),
+    random(NewL,L,Y3),
     asserta(boss1(X1,Y1)),
-    asserta(boss2(X2,Y2)).
+    asserta(boss2(X2,Y2)),
+    asserta(boss3(X3,Y3)).
+
 
 isPlayer(X,Y) :-
     positionX(A),
@@ -37,6 +42,11 @@ isBoss1(X,Y) :-
 
 isBoss2(X,Y) :-
     boss2(A,B),
+    X =:= A,
+    Y =:= B.
+
+isBoss3(X,Y) :-
+    boss3(A,B),
     X =:= A,
     Y =:= B.
 
@@ -245,13 +255,19 @@ printX(X,Y) :-
 
 printX(X,Y) :-
     isBoss1(X,Y),
-    write('L'),
+    write('K'),
     NextX is (X+1),
     printX(NextX,Y).
 
 printX(X,Y) :-
     isBoss2(X,Y),
-    write('L'),
+    write('R'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    isBoss3(X,Y),
+    write('D'),
     NextX is (X+1),
     printX(NextX,Y).
 
