@@ -516,9 +516,9 @@ shop :-
     ),!.
 
 triggered :-
-    random(1,100,L),
+    random(81,100,L),
     (
-        L >= 95
+        L >= 80
         -> enemyTriggered
         ; !
     ).
