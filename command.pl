@@ -361,7 +361,7 @@ tukar :-
     retract(claim(_,_,_)),!.
 
 triggered :-
-    random(1,70,L),
+    random(1,100,L),
     (
         L >= 80
         -> enemyTriggered
