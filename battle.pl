@@ -35,6 +35,11 @@ bossTriggered1 :-
     asserta(isEnemyAlive(1)),
     fight, !.
 
+bossTriggered1 :-
+    \+myjob(_,_,_,_,_,_,_,_,_),
+    write('Sok jagoan lawan boss langsung?'),nl,
+    !.
+
 bossTriggered2 :-
     ID is 101,
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
@@ -106,13 +111,6 @@ pick(_) :-
 pick(_) :-
     \+isFight(_),
     write('Yakin pakai tangan kosong?'),nl,
-    !.
-
-/*BOSS DILAWAN PADAHAL MUSUH KECIL BELOM DILAWAN*/
-pick(_) :-
-    isFight(_),
-    \+myjob(_,_,_,_,_,_,_,_,_),
-    write('Sok jagoan lawan boss langsung?'),nl,
     !.
 
 /*Ambil item double*/
@@ -311,7 +309,7 @@ attack :-
     enemy(ID, NamaEnemy, _,_,EnemyHealth,_,_,_,_),
     NewEnemyHealth is (EnemyHealth-MyAttack),
     retract(enemy(ID, NamaEnemy, Level, MaxHealth,_, Attack, Defense, Special,Exp)),
-    asserta(enemy(ID, NamaEnemy, Level, MaxHealth,EnemyHealth - MyAttack, Attack, Defense, Special,Exp)),
+    asserta(enemy(ID, NamaEnemy, Level, MaxHealth,NewEnemyHealth, Attack, Defense, Special,Exp)),
     write(Nama), write(' sudah attack!'), nl,
     attackComment,
     !.
