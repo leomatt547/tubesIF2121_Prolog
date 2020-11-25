@@ -91,6 +91,8 @@ end_condition(X) :-
     random(15,30,Sizex),
     random(15,30,Sizey),
     initMap(Sizex, Sizey),
+    Uang is 100,
+    asserta(gold(Uang)),
     player(Username),
     write('Information'), nl,
     write('Name: '), write(Username), nl,nl,
@@ -216,9 +218,9 @@ writeInventory:-
 	!.
 
 writeInventory:-
-	forall(inventory(ID, Nama, Quantity),(
+	forall(inventory(ID, Nama, Quantity, Status),(
 		write('inventory('), write(ID), write(', '), write(Nama), write(', '),
-        write(Quantity), write(').'), nl
+        write(Quantity), write(', '),write(Status), write(').'), nl
 	)), !.
 
 loadGame(_) :-

@@ -23,6 +23,7 @@ w :-
     \+isKanan(TX,Next),
     \+isKiri(TX,Next),
     \+isQuest(TX,Next),
+    \+isShop(TX,Next),
     \+isTembok(TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next,TX,Next),
     \+isBoss1(TX,Next),
     \+isBoss2(TX,Next),
@@ -53,7 +54,20 @@ w :-
     positionY(T),
     Next is (T-1),
     isQuest(TX,Next),
-    write('Silahkan claim bonus anda.'),
+    write('Ketik <tukar.> untuk mendapatkan quest Anda!'),nl,
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
+
+w :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (T-1),
+    isShop(TX,Next),
+    write('Selamat Datang di Logkom Mart! Selamat Berbelanja'),nl,
+    write('Ketik <gacha.> untuk berbelanja secara gacha.'),nl,
+    write('Ketik <shop.> untuk beli potion'),nl,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -105,6 +119,7 @@ a :-
     \+isKanan(Next,T),
     \+isKiri(Next,T),
     \+isQuest(Next,T),
+    \+isShop(Next,T),
     \+isBoss1(Next,T),
     \+isBoss2(Next,T),
     \+isBoss3(Next,T),
@@ -135,7 +150,20 @@ a :-
     positionY(T),
     Next is (TX-1),
     isQuest(Next,T),
-    write('Silahkan claim bonus anda.'),
+    write('Ketik <tukar.> untuk mendapatkan quest Anda!'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+a :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (TX-1),
+    isShop(Next,T),
+    write('Selamat Datang di Logkom Mart! Selamat Berbelanja'),nl,
+    write('Ketik <gacha.> untuk berbelanja secara gacha.'),nl,
+    write('Ketik <shop.> untuk beli potion'),nl,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -187,6 +215,7 @@ s :-
     \+isKanan(TX,Next),
     \+isKiri(TX,Next),
     \+isQuest(TX,Next),
+    \+isShop(TX,Next),
     \+isBoss1(TX,Next),
     \+isBoss2(TX,Next),
     \+isBoss3(TX,Next),
@@ -217,7 +246,20 @@ s :-
     positionY(T),
     Next is (T+1),
     isQuest(TX,Next),
-    write('Silahkan claim bonus anda.'),
+    write('Ketik <tukar.> untuk mendapatkan quest Anda!'),
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
+
+s :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (T+1),
+    isShop(TX,Next),
+    write('Selamat Datang di Logkom Mart! Selamat Berbelanja'),nl,
+    write('Ketik <gacha.> untuk berbelanja secara gacha.'),nl,
+    write('Ketik <shop.> untuk beli potion'),nl,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -270,6 +312,7 @@ d :-
     \+isKanan(Next,T),
     \+isKiri(Next,T),
     \+isQuest(Next,T),
+    \+isShop(Next,T),
     \+isBoss1(Next,T),
     \+isBoss2(Next,T),
     \+isBoss3(Next,T),
@@ -300,7 +343,20 @@ d :-
     positionY(T),
     Next is (TX+1),
     isQuest(Next,T),
-    write('Silahkan claim bonus anda.'),
+    write('Ketik <tukar.> untuk mendapatkan quest Anda!'),nl,
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+d :-
+    init(_),
+    \+ isEnemyAlive(_),
+    positionX(TX),
+    positionY(T),
+    Next is (TX+1),
+    isShop(Next,T),
+    write('Selamat Datang di Logkom Mart! Selamat Berbelanja'),nl,
+    write('Ketik <gacha.> untuk berbelanja secara gacha.'),nl,
+    write('Ketik <shop.> untuk beli potion'),nl,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -359,6 +415,101 @@ tukar :-
     asserta(myjob(_,_,_,_,_,_,_,_,TempExp)),
     write('Anda mendapatkan Gold dan Exp'),
     retract(claim(_,_,_)),!.
+
+tukar :-
+    init(_),
+    \+claim(_,_,_),
+    positionX(X),
+    positionY(Y),
+    isQuest(X,Y),
+    write('Anda Belum mendapat Quest! Segera kumpulkan koleksi musuh!'),
+    !.
+
+gacha :-
+    init(_),
+    positionX(X),
+    positionY(Y),
+    isShop(X,Y),
+    gold(Uang),
+    Uang >= 100,
+    write('Uang Anda berjumlah '), write(Uang),nl,
+    write('Apakah Anda Yakin? Masukkan Angka (0/1)'),nl,
+    read(Pilihan),
+        (
+            Pilihan =:= 1 ->
+            random(4,8,ID),
+            addItem(ID),
+            inventory(ID,Nama,_,_),
+            retract(gold(Uang)),
+            asserta(gold(Uang-100)),
+            write('Selamat! Anda Mendapatkan Items: '), write(Nama), nl
+            ;
+            (
+                Pilihan =:= 0 ->
+                write('Transaksi Anda dibatalkan'),nl
+            )
+        ),
+    !.
+
+gacha :-
+    init(_),
+    positionX(X),
+    positionY(Y),
+    isShop(X,Y),
+    gold(Uang),
+    Uang < 100,
+    write('Maaf! Uang Anda kurang dari 100!'),nl,
+    !.
+
+shop :-
+    init(_),
+    positionX(X),
+    positionY(Y),
+    isShop(X,Y),
+    gold(Uang),
+    Uang < 100,
+    write('Maaf! Uang Anda kurang dari 100!'),nl,
+    !.
+
+shop :-
+    init(_),
+    positionX(X),
+    positionY(Y),
+    isShop(X,Y),
+    gold(Uang),
+    Uang >= 100,
+    write('Uang Anda berjumlah '), write(Uang),nl,
+    write('1. red potion - 100 Gold'),nl,
+    write('2. blue potion - 100 Gold'),nl,
+    write('3. pink potion - 100 Gold'),nl,
+    write('Masukkan angka'),nl,
+    read(ID),
+    (
+        ID =:= 1 ->
+        addItem(ID),
+        inventory(ID,Nama,_,_),
+        retract(gold(Uang)),
+        asserta(gold(Uang-100)),
+        write('Selamat, Anda mendapatkan '),write(Nama),nl
+        ;
+        (
+            ID =:= 2 ->
+            addItem(ID),
+            inventory(ID,Nama,_,_),
+            retract(gold(Uang)),
+            asserta(gold(Uang-100)),
+            write('Selamat, Anda mendapatkan '),write(Nama),nl   
+            ;
+            (
+                ID =:= 3 ->
+                addItem(ID),
+                inventory(ID,Nama,_,_),
+                retract(gold(Uang)),
+                asserta(gold(Uang-100)),
+                write('Selamat, Anda mendapatkan '),write(Nama),nl
+            )
+        )
+    ),!.
 
 triggered :-
     random(1,100,L),

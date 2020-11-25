@@ -23,7 +23,6 @@ initBossMap :-
     asserta(boss2(X2,Y2)),
     asserta(boss3(X3,Y3)).
 
-
 isPlayer(X,Y) :-
     positionX(A),
     positionY(B),
@@ -31,9 +30,12 @@ isPlayer(X,Y) :-
     Y =:= B.
 
 isQuest(X,Y) :-
-    claim(_,_,_),
     X =:= 2,
     Y =:= 2.
+
+isShop(X,Y) :-
+    X =:= 4,
+    Y =:= 4.
 
 isBoss1(X,Y) :-
     boss1(A,B),
@@ -57,22 +59,22 @@ generateTembok :-
     panjang(J),
     NewJ is J-6,
     NewL is L-6,
-    random(3,NewJ,TX1),
-    random(3,NewJ,TX2),
-    random(3,NewJ,TX3),
-    random(3,NewJ,TX4),
-    random(3,NewJ,TX5),
-    random(3,NewJ,TX6),
-    random(3,NewJ,TX7),
-    random(3,NewJ,TX8),
-    random(3,NewL,TY1),
-    random(3,NewL,TY2),
-    random(3,NewL,TY3),
-    random(3,NewL,TY4),
-    random(3,NewL,TY5),
-    random(3,NewL,TY6),
-    random(3,NewL,TY7),
-    random(3,NewL,TY8),
+    random(5,NewJ,TX1),
+    random(5,NewJ,TX2),
+    random(5,NewJ,TX3),
+    random(5,NewJ,TX4),
+    random(5,NewJ,TX5),
+    random(5,NewJ,TX6),
+    random(5,NewJ,TX7),
+    random(5,NewJ,TX8),
+    random(5,NewL,TY1),
+    random(5,NewL,TY2),
+    random(5,NewL,TY3),
+    random(5,NewL,TY4),
+    random(5,NewL,TY5),
+    random(5,NewL,TY6),
+    random(5,NewL,TY7),
+    random(5,NewL,TY8),
     asserta(tembok(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8)).
 
 isTembok(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
@@ -163,6 +165,12 @@ printX(X,Y) :-
 printX(X,Y) :-
     isQuest(X,Y),
     write('Q'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    isShop(X,Y),
+    write('S'),
     NextX is (X+1),
     printX(NextX,Y).
 

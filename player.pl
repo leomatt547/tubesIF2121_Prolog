@@ -23,6 +23,11 @@ addItems(Nama) :-
     Quantity is TempQuantity+1,
     asserta(inventory(ID, Nama, Quantity,Status)),!.
 
+addItem(ID) :-
+    items(ID, Nama, TempQuantity,Status),
+    Quantity is TempQuantity+1,
+    asserta(inventory(ID, Nama, Quantity,Status)),!.
+
 delItems(Nama) :-
     \+inventory(_,Nama,_,_),
     write('Tidak ada items tersebut di inventory anda'),

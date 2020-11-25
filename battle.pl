@@ -203,7 +203,7 @@ cont :-
 /*Giliran Musuh*/
 attackComment :-
     enemy(_, EnemyName, _, _,EnemyHealth, _, _, _,_),
-    EnemyHealth >= 1,
+    EnemyHealth > 0,
     write('Health '), write(EnemyName), write(' tersisa '), write(EnemyHealth), nl,
     write('Sekarang giliran musuh!'), nl,
     write('...'), nl,
