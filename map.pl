@@ -296,11 +296,11 @@ map :-
     stage(N),
     write('Stage'), write(N), nl,
     adaTembok(_),
-    printX(0,0),
+    printX(0,0),nl,
     legenda,!.
 
 legenda :- 
-writeln('X = tembok'),
-writeln('- = rumput'),
-writeln('Q = quest'),
-writeln('S = shop').
+    write('X = tembok'),nl,
+    write('- = rumput'),nl,
+    write('Q = quest'),nl,
+    write('S = shop'),nl,!.
