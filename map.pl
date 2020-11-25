@@ -254,18 +254,21 @@ printX(X,Y) :-
     printX(NextX,Y).
 
 printX(X,Y) :-
+    stage(1),
     isBoss1(X,Y),
     write('K'),
     NextX is (X+1),
     printX(NextX,Y).
 
 printX(X,Y) :-
+    stage(2),
     isBoss2(X,Y),
     write('R'),
     NextX is (X+1),
     printX(NextX,Y).
 
 printX(X,Y) :-
+    stage(3),
     isBoss3(X,Y),
     write('D'),
     NextX is (X+1),
@@ -293,4 +296,11 @@ map :-
     stage(N),
     write('Stage'), write(N), nl,
     adaTembok(_),
-    printX(0,0),!.
+    printX(0,0),
+    legenda,!.
+
+legenda :- 
+writeln('X = tembok'),
+writeln('- = rumput'),
+writeln('Q = quest'),
+writeln('S = shop').

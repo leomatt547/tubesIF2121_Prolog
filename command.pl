@@ -363,7 +363,7 @@ tukar :-
 triggered :-
     random(1,100,L),
     (
-        L >= 80
+        L >= 95
         -> enemyTriggered
         ; !
     ).
