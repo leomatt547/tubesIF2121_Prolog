@@ -1,10 +1,10 @@
-:- dynamic(inventory/3).      /* inventory(NamaItems) */
-:- dynamic(boss/8).            /* boss */
+:- dynamic(inventory/4).      /* inventory(NamaItems) */
+:- dynamic(boss/8).           /* boss */
 
 maxInventory(10).
 
 cekPanjang(Length) :-
-    findall(Nama, inventory(_,Nama,_), List),
+    findall(Nama, inventory(_,Nama,_,_), List),
     length(List,Length).
 
 isFull :-
@@ -19,34 +19,35 @@ addItems(_) :-
     !,fail.
 
 addItems(Nama) :-
-    items(_, Nama, TempQuantity),
+    items(ID, Nama, TempQuantity,Status),
     Quantity is TempQuantity+1,
-    asserta(inventory(_, Nama, Quantity)),!.
+    asserta(inventory(ID, Nama, Quantity,Status)),!.
 
 delItems(Nama) :-
-    \+inventory(_,Nama,_),
+    \+inventory(_,Nama,_,_),
     write('Tidak ada items tersebut di inventory anda'),
     !,fail.
 
 delItems(Nama) :-
+    inventory(ID, Nama, TempQuantity,_),
     TempQuantity >= 1,
-    inventory(ID, Nama, TempQuantity),
     Quantity is TempQuantity-1,
-    retract(inventory(ID, Nama, TempQuantity)),
-    asserta(inventory(ID, Nama, Quantity)),!.
+    retract(inventory(ID, Nama, TempQuantity,_)),
+    asserta(inventory(ID, Nama, Quantity,_)),!.
 
 delItems(Nama) :-
+    inventory(_, Nama, TempQuantity,_),
     TempQuantity >= 0,
-    retract(inventory(_, Nama, TempQuantity)),!.
+    retract(inventory(_, Nama, TempQuantity,_)),!.
 
 initBoss(ID) :-
-    job(ID, Name, Level, MaxHealth, Attack, Defense, Special),
+    job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
     Health is MaxHealth,
-    asserta(boss(ID, Name, Level, MaxHealth, Health, Attack, Defense,Special)),!.
+    asserta(boss(ID, Name, Level, MaxHealth, Health, Attack, Defense,Special, Exp)),!.
 
 makeListItems(ListNama, ListQuantity) :-
-    findall(Nama, inventory(_,Nama,_), ListNama),
-    findall(Quantity, inventory(_,_,Quantity), ListQuantity).
+    findall(Nama, inventory(_,Nama,_,_), ListNama),
+    findall(Quantity, inventory(_,_,Quantity,_), ListQuantity).
 
 makeListBoss(ListNama,ListHealth) :-
     findall(Name, boss(_,Name,_,_,_,_,_,_), ListNama),

@@ -1,37 +1,39 @@
 :- dynamic(items/2).
 
 /* items(jobID,namaItem,quantity)
-JobID 0 = general
+JobID 1 = health
+JobID 2 = armor
+JobID 3 = weapon
 
 General Items*/
-items(0,red_potion,0).
-items(0,blue_potion,0).
-items(0,pink_potion,0).
+items(1,red_potion,0,1).
+items(2,blue_potion,0,1).
+items(3,pink_potion,0,1).
 /* General Weapons */
-items(0,starter_sword,0).
-items(0,cheat_dagger,0).
+items(4,starter_sword,0,3).
+items(5,cheat_dagger,0,3).
 /* General Armors */
-items(0,starter_cloak,0).
-items(0,mecha_suit,0).
-items(0,plot_armor,0).
+items(6,starter_cloak,0,2).
+items(7,mecha_suit,0,2).
+items(8,plot_armor,0,2).
 
 /* Hero Only Weapons */
-items(1,longsword,0).
-items(1,excalibur,0).
+items(0,longsword,0,3).
+items(0,excalibur,0,3).
 /* Hero Only Armors */
-items(1,iron_armor,0).
-items(1,hero_suit,0).
+items(0,iron_armor,0,2).
+items(0,hero_suit,0,2).
 
 /* Paladin Only Weapons */
-items(2,spiked_shield,0).
-items(2,paladin_shield,0).
+items(0,spiked_shield,0,3).
+items(0,paladin_shield,0,3).
 /* Paladin Only Armors*/
-items(2,silver_breastplate,0).
-items(2,golden_suit,0).
+items(0,silver_breastplate,0,2).
+items(0,golden_suit,0,2).
 
 /* Wizard Only Weapons */
-items(3,crooked_wand,0).
-items(3,excelsior,0).
+items(0,crooked_wand,0,3).
+items(0,excelsior,0,3).
 /* Wizard Only Armors */
-items(3,red_robe,0).
-items(3,grand_robe,0).
+items(0,red_robe,0,2).
+items(0,grand_robe,0,2).
