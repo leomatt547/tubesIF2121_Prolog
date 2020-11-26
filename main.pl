@@ -11,9 +11,6 @@
 :- include('inventory.pl').
 :- include('battle.pl').
 
-/* Ignore Singleton */
-:-style_check(-singleton).
-
 title :-
     write('   ____  U _____ u _   _    ____     _   _               _   _ '),nl,
     write('U /"___|u | ___"|/| * |"|  / __"| u | | | |     ___     | | |"| '),nl,
@@ -59,7 +56,7 @@ initFirst :-
     write('% 3. Wizard  : Glass Cannon, high on attack but low on max health               %'),nl,
     write('%                                                                               %'),nl,
     write('%                                                                               %'),nl,                                       
-    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl, nl.
+    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl, nl,
     read(Jobstart), nl,
     job(ID,Jobstart,_,_,_,_,_,_),
     (
@@ -68,7 +65,10 @@ initFirst :-
             addItems(excalibur),
             addItems(iron_armor),
             addItems(hero_suit),
-            write('You choose Hero, lets explore the world'),nl
+            write('You choose Hero, lets explore the world'),nl,
+            write('         (>_________________________________   '),nl,
+            write('[########[]_________________________________>  '),nl,
+            write('         (>'),nl
             ;
             (
                 ID =:= 2 ->
@@ -76,7 +76,10 @@ initFirst :-
                 addItems(paladin_shield),
                 addItems(silver_breastplate),
                 addItems(golden_suit),
-                write('You choose Paladin, lets explore the world'),nl
+                write('You choose Paladin, lets explore the world'),nl,
+                write('     []'),nl,
+                write('o<<<<||::===========================-'),nl,
+                write('     []'),nl
                 ;
                 (
                     ID =:= 3 ->
@@ -84,7 +87,8 @@ initFirst :-
                     addItems(excelsior),
                     addItems(red_robe),
                     addItems(grand_robe),
-                    write('You choose Wizard, lets explore the world'),nl, nl
+                    write('You choose Wizard, lets explore the world'),nl,
+                    write('[O(((((([========================---'),nl
                 )
             )
     ),
@@ -107,6 +111,9 @@ end_condition(X) :-
     write('Information'), nl,
     write('Name: '), write(Username), nl,nl,
     statusInventory,!.
+
+
+
 
 
 do(X) :- have(X),!.

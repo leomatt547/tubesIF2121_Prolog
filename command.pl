@@ -398,11 +398,6 @@ d :-
     \+init(_),
     write('Game belum dimulai').
 
-bisaclaim :-
-    claim(Satu,Dua,Tiga),
-    Satu \== 0, Dua \== 0, Tiga \== 0,
-    asserta(isclaim(1)).
-
 tukar :-
     init(_),
     isclaim(_),
