@@ -125,21 +125,26 @@ pick(X) :-
     fightChance, 
     !.
 
-/*Pick Health Berhasil*/
+/*Pick Health Berhasil
+myjob(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)*/
 pick(X) :-
     isEnemyAlive(_),
     isFight(_),
     \+ isPick(_),
-    myjob(_, Nama, _, MyMaxHealth, MyHealth, MyAttack, MyDefense,_,_),
+    myjob(_, Nama,MyLevel, MyMaxHealth, MyHealth, MyAttack, MyDefense, MySpecial,MyExp),
     inventory(_,X,_,Status),
     (
         /*Pick Health*/
         Status =:= 1 ->
+        Level2 is MyLevel,
+        MaxHealth2 is MyMaxHealth,
         Health2 is MyMaxHealth,
         Attack2 is MyAttack,
         Defense2 is MyDefense,
-        retract(myjob(_,Nama,_,MyMaxHealth, MyHealth,MyAttack,MyDefense,_,_)),
-        asserta(myjob(_,Nama,_,MyMaxHealth, Health2,Attack2,Defense2,_,_)),
+        Special2 is MySpecial,
+        Exp2 is MyExp,
+        retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
+        asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
         write('Kamu memilih '), write(X), write(' untuk menyembuhkan dirimu '), nl,
         asserta(isPick(1))
         ;
@@ -147,10 +152,14 @@ pick(X) :-
             /*Pick Armor*/
             Status =:= 2 ->
             Defense2 is MyDefense+10,
+            Level2 is MyLevel,
+            MaxHealth2 is MyMaxHealth,
+            Health2 is MyMaxHealth,
             Attack2 is MyAttack,
-            Health2 is MyHealth,
-            retract(myjob(_,Nama,_,_, MyHealth,MyAttack,MyDefense,_,_)),
-            asserta(myjob(_,Nama, _,_,Health2,Attack2,Defense2,_,_)),
+            Special2 is MySpecial,
+            Exp2 is MyExp,
+            retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
+            asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
             write('Kamu memilih '), write(X), write(' untuk defense dirimu '), nl,
             asserta(isPick(2))
             ;
@@ -158,11 +167,16 @@ pick(X) :-
                 /*Pick Weapon*/
                 Status =:= 3 ->
                 Attack2 is (MyAttack+10),
-                Health2 is MyHealth,
+                Level2 is MyLevel,
+                MaxHealth2 is MyMaxHealth,
+                Health2 is MyMaxHealth,
                 Defense2 is MyDefense,
-                retract(myjob(_,Nama,_,_,MyHealth,MyAttack,MyDefense,_,_)),
-                asserta(myjob(_,Nama,_,_,Health2,Attack2,Defense2,_,_)),
+                Special2 is MySpecial,
+                Exp2 is MyExp,
+                retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
+                asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
                 write('Kamu memilih '), write(X), write(' untuk attack musuh '), nl,
+                mystatus,
                 asserta(isPick(3))
             )
         )
