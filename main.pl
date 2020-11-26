@@ -62,33 +62,71 @@ initFirst :-
     (
         ID =:= 1 ->
             addItems(longsword),
+            addItems(longsword),
+            addItems(longsword),
+            addItems(longsword),
+            addItems(longsword),
             addItems(excalibur),
             addItems(iron_armor),
             addItems(hero_suit),
-            write('You choose Hero, lets explore the world'),nl,
-            write('         (>_________________________________   '),nl,
-            write('[########[]_________________________________>  '),nl,
-            write('         (>'),nl
+            write('You choose Hero, lets explore the world'),nl,nl,                                              
+            write('    `7MMF`  `7MMF`                               '),nl,
+            write('      MM      MM                                 '),nl,
+            write('      MM      MM   .gP"Ya  `7Mb,od8  ,pW"Wq.     '),nl,
+            write('      MMmmmmmmMM  ,M`   Yb   MM` "` 6W`   `Wb    '),nl,
+            write('      MM      MM  8M""""""   MM     8M     M8    '),nl,
+            write('      MM      MM  YM.    ,   MM     YA.   ,A9    '),nl,
+            write('    .JMML.  .JMML. `Mbmmd` .JMML.    `Ybmd9`     '),nl,
+            write('                                                 '),nl,                          
+            write('           (>_________________________________   '),nl,
+            write('  [########[]_________________________________>  '),nl,
+            write('           (>                                    '),nl
             ;
             (
                 ID =:= 2 ->
                 addItems(spiked_shield),
+                addItems(spiked_shield),
+                addItems(spiked_shield),
+                addItems(spiked_shield),
+                addItems(spiked_shield),
                 addItems(paladin_shield),
                 addItems(silver_breastplate),
                 addItems(golden_suit),
-                write('You choose Paladin, lets explore the world'),nl,
-                write('     []'),nl,
-                write('o<<<<||::===========================-'),nl,
-                write('     []'),nl
+                write('You choose Paladin, lets explore the world'),nl,nl,                                                                           
+                write('                      ,,                  ,,    ,,              '),nl,
+                write('`7MM"""Mq.          `7MM                `7MM    db              '),nl,
+                write('  MM   `MM.           MM                  MM                    '),nl,
+                write('  MM   ,M9  ,6"Yb.    MM   ,6"Yb.    ,M""bMM  `7MM  `7MMpMMMb.  '),nl,
+                write('  MMmmdM9  8)   MM    MM  8)   MM  ,AP    MM    MM    MM    MM  '),nl,
+                write('  MM        ,pm9MM    MM   ,pm9MM  8MI    MM    MM    MM    MM  '),nl,
+                write('  MM       8M   MM    MM  8M   MM  `Mb    MM    MM    MM    MM  '),nl,
+                write('.JMML.     `Moo9^Yo..JMML.`Moo9^Yo. `Wbmd"MML..JMML..JMML  JMML.'),nl,
+                write('                                                                '),nl,                                                               
+                write('                   []                                           '),nl,
+                write('              o<<<<||::===========================-             '),nl,
+                write('                   []                                           '),nl
                 ;
                 (
                     ID =:= 3 ->
                     addItems(crooked_wand),
+                    addItems(crooked_wand),
+                    addItems(crooked_wand),
+                    addItems(crooked_wand),
+                    addItems(crooked_wand),
                     addItems(excelsior),
                     addItems(red_robe),
                     addItems(grand_robe),
-                    write('You choose Wizard, lets explore the world'),nl,
-                    write('[O(((((([========================---'),nl
+                    write('You choose Wizard, lets explore the world'),nl,nl,                                                                           
+                    write('                        ,,                                   ,,  '),nl,
+                    write('`7MMF`     A     `7MF`  db                                 `7MM  '),nl,
+                    write('  `MA     ,MA     ,V                                         MM  '),nl,
+                    write('   VM:   ,VVM:   ,V   `7MM  M"""MMV  ,6"Yb.  `7Mb,od8   ,M""bMM  '),nl,
+                    write('    MM.  M` MM.  M`     MM  `  AMV  8)   MM    MM` "` ,AP    MM  '),nl,
+                    write('    `MM A`  `MM A`      MM    AMV    ,pm9MM    MM     8MI    MM  '),nl,
+                    write('     :MM;    :MM;       MM   AMV  , 8M   MM    MM     `Mb    MM  '),nl,
+                    write('      VF      VF      .JMML.AMMmmmM `Moo9^Yo..JMML.    `Wbmd"MML.'),nl,
+                    write('                                                                 '),nl,,
+                    write('                [O(((((([========================---             '),nl
                 )
             )
     ),
@@ -125,7 +163,23 @@ have(X) :-
 
 start :- 
     init(_),
-    write('Game sudah dimulai'),!.
+    write('                                                                                                                 '),nl,
+    write('      * ***                                                                                                      '),nl,
+    write('    *  ****  *                                                           *                                 *     '),nl,
+    write('   *  *  ****                                                           **                                **     '),nl,
+    write('  *  **   **                                                            **                                **     '),nl,
+    write(' *  ***                                                      ****     ********            ***  ****     ******** '),nl,
+    write('**   **             ****    *** **** ****       ***         * **** * ********     ****     **** **** * ********  '),nl,
+    write('**   **   ***      * ***  *  *** **** ***  *   * ***       **  ****     **       * ***  *   **   ****     **     '),nl,
+    write('**   **  ****  *  *   ****    **  **** ****   *   ***     ****          **      *   ****    **            **     '),nl,
+    write('**   ** *  ****  **    **     **   **   **   **    ***      ***         **     **    **     **            **     '),nl,
+    write('**   ***    **   **    **     **   **   **   ********         ***       **     **    **     **            **     '),nl,
+    write(' **  **     *    **    **     **   **   **   *******            ***     **     **    **     **            **     '),nl,
+    write('  ** *      *    **    **     **   **   **   **            ****  **     **     **    **     **            **     '),nl,
+    write('   ***     *     **    **     **   **   **   ****    *    * **** *      **     **    **     ***           **     '),nl,
+    write('    *******       ***** **    ***  ***  ***   *******        ****        **     ***** **     ***           **    '),nl,
+    write('      ***          ***   **    ***  ***  ***   *****                             ***   **                        '),nl,
+                                                                                                                                      
 
 start :-
     \+init(_),
@@ -145,7 +199,22 @@ quit :-
     write('Dasar labil!'),!.
 
 quit :-
-    write('Bye!!'), nl,
+    write('                                                                                               '),nl,
+    write('      * ***                                                                           **       '),nl,
+    write('    *  ****  *                                                                         **      '),nl,
+    write('   *  *  ****                                                                          **      '),nl,
+    write('  *  **   **                                                                           **      '),nl,
+    write(' *  ***                                                                                **      '),nl,
+    write('**   **             ****    *** **** ****       ***          ***    ***  ****      *** **      '),nl,
+    write('**   **   ***      * ***  *  *** **** ***  *   * ***        * ***    **** **** *  *********    '),nl,
+    write('**   **  ****  *  *   ****    **  **** ****   *   ***      *   ***    **   ****  **   ****     '),nl,
+    write('**   ** *  ****  **    **     **   **   **   **    ***    **    ***   **    **   **    **      '),nl,
+    write('**   ***    **   **    **     **   **   **   ********     ********    **    **   **    **      '),nl,
+    write(' **  **     *    **    **     **   **   **   *******      *******     **    **   **    **      '),nl,
+    write('  ** *      *    **    **     **   **   **   **           **          **    **   **    **      '),nl,
+    write('   ***     *     **    **     **   **   **   ****    *    ****    *   **    **   **    **      '),nl,
+    write('    *******       ***** **    ***  ***  ***   *******      *******    ***   ***   *****        '),nl,
+    write('      ***          ***   **    ***  ***  ***   *****        *****      ***   ***   ***         '),nl,
     retract(positionX(_)),
     retract(positionY(_)),
     retract(lebar(_)),

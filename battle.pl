@@ -10,6 +10,12 @@ enemyTriggered :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),
+    write(' '),nl,
+    write(' 888b.       w    w   8                w              w   8 '),nl,
+    write(' 8wwwP .d88 w8ww w8ww 8 .d88b    d88b w8ww .d88 8d8b w8ww 8 '),nl,
+    write(' 8   b 8  8  8    8   8 8.dP`    `Yb.  8   8  8 8P    8   " '),nl,
+    write(' 888P` `Y88  Y8P  Y8P 8 `Y88P    Y88P  Y8P `Y88 8     Y8P w '),nl,nl,
+                                                           
     write('Nah! Musuh '), write(Name), write(' random dengan level '), write(Level), write(' akan menyerang kamu!'), nl,
     write('Buatlah keputusan!'), nl,
     write('- fight.'), nl,
@@ -25,6 +31,11 @@ bossTriggered1 :-
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
     write('Kamu bertemu King Slime :'), write(Name), write('!!!'), nl,nl,
+    write('                 8  dP w               .d88b. 8 w                                   '),nl,
+    write('                 8wdP  w 8d8b. .d88    YPwww. 8 w 8d8b.d8b. .d88b                   '),nl,
+    write('                 88Yb  8 8P Y8 8  8        d8 8 8 8P Y8P Y8 8.dP`                   '),nl,
+    write('                 8  Yb 8 8   8 `Y88    `Y88P` 8 8 8   8   8 `Y88P                   '),nl,
+    write('                               wwdP                                                 '),nl,nl,
     write('                                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                '),nl,
     write('                                  ▓▓▓▓░░░░░░░░░░░░▓▓▓▓                              '),nl,
     write('                                ▓▓▓▓▒▒░░░░░░░░░░░░░░░░▓▓                            '),nl,
@@ -52,7 +63,11 @@ bossTriggered1 :-
     write('  ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓'),nl,
     write('▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓'),nl,
     write('▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓'),nl,
-    write('        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      '),nl,nl,
+    write('        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      '),nl,nl,nl,
+    write('              888b.       w    w   8                w              w   8 '),nl,
+    write('              8wwwP .d88 w8ww w8ww 8 .d88b    d88b w8ww .d88 8d8b w8ww 8 '),nl,
+    write('              8   b 8  8  8    8   8 8.dP`    `Yb.  8   8  8 8P    8   " '),nl,
+    write('              888P` `Y88  Y8P  Y8P 8 `Y88P    Y88P  Y8P `Y88 8     Y8P w '),nl,nl,
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -66,7 +81,12 @@ bossTriggered2 :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
-    write('Kamu bertemu Boss 2 :'), write(Name), write('!!!'), nl,nl,
+    write('Kamu bertemu Royal Tigress :'), write(Name), write('!!!'), nl,nl,
+    write('                                888b.                   8    88888 w                           '),nl,
+    write('                                8  .8 .d8b. Yb  dP .d88 8      8   w .d88 8d8b .d88b d88b d88b '),nl,
+    write('                                8wwK` 8` .8  YbdP  8  8 8      8   8 8  8 8P   8.dP` `Yb. `Yb. '),nl,
+    write('                                8  Yb `Y8P`   dP   `Y88 8      8   8 `Y88 8    `Y88P Y88P Y88P '),nl,
+    write('                                             dP                      wwdP                      '),nl,nl,
     write('                  ████████████████████████    ████████████░░░░░░░░████░░░░████████████    ████████████████████████                '),nl,
     write('                  ████████████████████████    ████████████░░░░░░░░████░░░░████████████    ████████████████████████                '),nl,
     write('                  ████▓▓▓▓                ████████████░░░░████████████████░░░░████████████                ████████                '),nl,
@@ -109,8 +129,11 @@ bossTriggered2 :-
     write('                                          ████████████████    ████████    ████████████████                                        '),nl,
     write('  ░░░░    ░░░░    ░░    ░░    ░░░░    ░░░░░░░░████████████████████████▓▓██████████████░░░░        ░░░░░░░░░░░░░░        ░░░░  ░░░░'),nl,
     write('                                              ████████████████████████████████████████                                            '),nl,
-    write('                                                      ████████████████████████                                                   '),nl,
-    
+    write('                                                      ████████████████████████                                                   '),nl,nl,nl,
+    write('                                     888b.       w    w   8                w              w   8 '),nl,
+    write('                                     8wwwP .d88 w8ww w8ww 8 .d88b    d88b w8ww .d88 8d8b w8ww 8 '),nl,
+    write('                                     8   b 8  8  8    8   8 8.dP`    `Yb.  8   8  8 8P    8   " '),nl,
+    write('                                     888P` `Y88  Y8P  Y8P 8 `Y88P    Y88P  Y8P `Y88 8     Y8P w '),nl,nl,
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -120,6 +143,11 @@ bossTriggered3 :-
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
     write('Kamu bertemu Black Dragon :'), write(Name), write('!!!'), nl,nl,
+    write('       888b. 8           8       888b.                            '),nl,
+    write('       8wwwP 8 .d88 .d8b 8.dP    8   8 8d8b .d88 .d88 .d8b. 8d8b. '),nl,
+    write('       8   b 8 8  8 8    88b     8   8 8P   8  8 8  8 8` .8 8P Y8 '),nl,
+    write('       888P` 8 `Y88 `Y8P 8 Yb    888P` 8    `Y88 `Y88 `Y8P` 8   8 '),nl,
+    write('                                                 wwdP             '),nl,
     write('                                            ..    '),nl,                               
     write('                                     ,o""""o        '),nl,                           
     write('                                  ,o$"     o '),nl,
@@ -157,6 +185,10 @@ bossTriggered3 :-
     write('                         (" ""$"""     o"" "o$o             `$$ooo     ,o$$ '),nl,
     write('                              $$"""o   (   "$o$$$"o            `$o$$$o$"$` '),nl,
     write('                               ) ) )           )  ) ) `          ` "   '),nl,
+    write('         888b.       w    w   8                w              w   8 '),nl,
+    write('         8wwwP .d88 w8ww w8ww 8 .d88b    d88b w8ww .d88 8d8b w8ww 8 '),nl,
+    write('         8   b 8  8  8    8   8 8.dP`    `Yb.  8   8  8 8P    8   " '),nl,
+    write('         888P` `Y88  Y8P  Y8P 8 `Y88P    Y88P  Y8P `Y88 8     Y8P w '),nl,nl,
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -367,7 +399,12 @@ attackComment :-
         ;
         (
             EnemyHealth =< 0 ->
-            write(EnemyName), write(' mati!'), nl,
+            write(EnemyName), write(' mati!'), nl,nl,
+            write(' 888b.       w    w   8                         8 '),nl,
+            write(' 8wwwP .d88 w8ww w8ww 8 .d88b    .d88b 8d8b. .d88 '),nl,
+            write(' 8   b 8  8  8    8   8 8.dP`    8.dP` 8P Y8 8  8 '),nl,
+            write(' 888P` `Y88  Y8P  Y8P 8 `Y88P    `Y88P 8   8 `Y88 '),nl,nl,
+                                                 
             (
                 ID =:= 4 ->
                 claim(Tambah,Haha,Hahaha),
@@ -407,7 +444,12 @@ attackComment :-
                             retract(stage(_)),
                             asserta(stage(2)),
                             asserta(gold(TempUang)),
-                            write('Ubah Stage ke 2')
+                            
+                            write('              w              w                     w                      d88b '),nl,
+                            write(' .d88b 8d8b. w8ww .d88b 8d8b w 8d8b. .d88    d88b w8ww .d88 .d88 .d88b    " dP '),nl,
+                            write(' 8.dP` 8P Y8  8   8.dP` 8P   8 8P Y8 8  8    `Yb.  8   8  8 8  8 8.dP`     dP  '),nl,
+                            write(' `Y88P 8   8  Y8P `Y88P 8    8 8   8 `Y88    Y88P  Y8P `Y88 `Y88 `Y88P    d888 '),nl,
+                            write('                                     wwdP                   wwdP               '),nl
                             ;
                             (
                                 ID =:= 101 ->
@@ -418,12 +460,15 @@ attackComment :-
                                 retract(stage(_)),
                                 asserta(stage(3)),
                                 asserta(gold(TempUang)),
-                                write('Ubah Stage ke 3')
+                                write('              w              w                     w                      d88b '),nl,
+                                write(' .d88b 8d8b. w8ww .d88b 8d8b w 8d8b. .d88    d88b w8ww .d88 .d88 .d88b     wwP '),nl,
+                                write(' 8.dP` 8P Y8  8   8.dP` 8P   8 8P Y8 8  8    `Yb.  8   8  8 8  8 8.dP`       8 '),nl,
+                                write(' `Y88P 8   8  Y8P `Y88P 8    8 8   8 `Y88    Y88P  Y8P `Y88 `Y88 `Y88P    Y88P '),nl,
+                                write('                                     wwdP                   wwdP               '),nl
                                 ;
                                 (
                                     ID =:= 102 ->
                                     stage(Ubah),
-                                    write('menang'),
                                     win
                                 )
                             )
@@ -522,18 +567,21 @@ enemyAttackComment :-
     !.
 
 win :-
-    write('You Win'),
-write('                                                                                                                                 '),nl,
-write('                                                                                                                             '),nl,
-write('                                                                                                                             '),nl,
-write('                                                                                                                             '),nl,
-write(' 88,dPYba,,adPYba,    ,adPPYba,  8b,dPPYba,   ,adPPYYba,  8b,dPPYba,    ,adPPYb,d8     8b       d8   ,adPPYba,  8b       d8  '),nl,
-write(' 88P`   "88"    "8a  a8P_____88  88P`   `"8a  ""     `Y8  88P`   `"8a  a8"    `Y88     `8b     d8`  a8P_____88  `8b     d8`  '),nl,
-write(' 88      88      88  8PP"""""""  88       88  ,adPPPPP88  88       88  8b       88      `8b   d8`   8PP"""""""   `8b   d8`   '),nl,
-write(' 88      88      88  "8b,   ,aa  88       88  88,    ,88  88       88  "8a,   ,d88       `8b,d8`    "8b,   ,aa    `8b,d8`    '),nl,
-write(' 88      88      88   `"Ybbd8"`  88       88  `"8bbdP"Y8  88       88   `"YbbdP"Y8         Y88`      `"Ybbd8"`      Y88`     '),nl,
-write('                                                                        aa,    ,88         d8`                      d8`      '),nl,
-write('                                                                         "Y8bbdP"         d8`                      d8`       '),nl,
+write('                                                                                               '),nl,
+write('    .xnnx.  .xx.                                    x=~                                        '),nl,
+write('  .f``"888X< `888.         u.      x.    .         88x.   .e.   .e.         u.      u.    u.   '),nl,
+write('  8L   8888X  8888   ...ue888b   .@88k  z88u      `8888X.x888:.x888   ...ue888b   x@88k u@88c. '),nl,
+write(' X88h. `8888  X888k  888R Y888r ~"8888 ^8888       `8888  888X `888k  888R Y888r ^"8888""8888" '),nl,
+write(' `8888 `8888  X8888  888R I888>   8888  888R        X888  888X  888X  888R I888>   8888  888R  '),nl,
+write('  `*88>`8888  X8888  888R I888>   8888  888R        X888  888X  888X  888R I888>   8888  888R  '),nl,
+write('    `! X888~  X8888  888R I888>   8888  888R        X888  888X  888X  888R I888>   8888  888R  '),nl,
+write('   -`  X*"    X8888 u8888cJ888    8888 ,888B .     .X888  888X. 888~ u8888cJ888    8888  888R  '),nl,
+write('    xH88hx  . X8888  "*888*P"    "8888Y 8888"      `%88%``"*888Y"     "*888*P"    "*88*" 8888" '),nl,
+write('  .*"*88888~  X888X    `Y"        `Y"   `YP          `~     `"          `Y"         ""   `Y"   '),nl,
+write('  `    "8%    X888>                                                                            '),nl,
+write('     .x..     888f                                                                             '),nl,
+write('    88888    :88f                                                                              '),nl,
+write('    "88*"  .x8*~                                                                               '),nl,nl,nl,
     retract(isEnemyAlive(_)),
     retract(isRun(_)),
     retract(isFight(_)),
@@ -541,17 +589,14 @@ write('                                                                         
     quit.
 
 lose :-
-write(' @@@  @@@   @@@@@@   @@@        @@@@@@   @@@  @@@     @@@  @@@  @@@   @@@@@@   @@@  '),nl,
-write(' @@@  @@@  @@@@@@@@  @@@       @@@@@@@@  @@@  @@@     @@@  @@@  @@@  @@@@@@@@  @@@  '),nl,
-write(' @@!  !@@  @@!  @@@  @@!       @@!  @@@  @@!  @@@     @@!  @@!  @@!  @@!  @@@  @@!  '),nl,
-write(' !@!  @!!  !@!  @!@  !@!       !@!  @!@  !@!  @!@     !@!  !@!  !@!  !@!  @!@  !@!  '),nl,
-write(' @!@@!@!   @!@!@!@!  @!!       @!@!@!@!  @!@!@!@!     @!!  !!@  @!@  @!@  !@!  !!@  '),nl,
-write(' !!@!!!    !!!@!!!!  !!!       !!!@!!!!  !!!@!!!!     !@!  !!!  !@!  !@!  !!!  !!!  '),nl,
-write(' !!: :!!   !!:  !!!  !!:       !!:  !!!  !!:  !!!     !!:  !!:  !!:  !!:  !!!  !!:  '),nl,
-write(' :!:  !:!  :!:  !:!   :!:      :!:  !:!  :!:  !:!     :!:  :!:  :!:  :!:  !:!  :!:  '),nl,
-write('  ::  :::  ::   :::   :: ::::  ::   :::  ::   :::      :::: :: :::   ::::: ::   ::  '),nl,
-write('  :   :::   :   : :  : :: : :   :   : :   :   : :       :: :  : :     : :  :   :    '),nl,nl,
-                                                                                   
+write('  ▄▀▀▄ ▀▀▄  ▄▀▀▀▀▄   ▄▀▀▄ ▄▀▀▄      ▄▀▀█▄▄   ▄▀▀█▀▄    ▄▀▀█▄▄▄▄  ▄▀▀█▄▄  '),nl,
+write(' █   ▀▄ ▄▀ █      █ █   █    █     █ ▄▀   █ █   █  █  ▐  ▄▀   ▐ █ ▄▀   █ '),nl,
+write(' ▐     █   █      █ ▐  █    █      ▐ █    █ ▐   █  ▐    █▄▄▄▄▄  ▐ █    █ '),nl,
+write('       █   ▀▄    ▄▀   █    █         █    █     █       █    ▌    █    █ '),nl,
+write('     ▄▀      ▀▀▀▀      ▀▄▄▄▄▀       ▄▀▄▄▄▄▀  ▄▀▀▀▀▀▄   ▄▀▄▄▄▄    ▄▀▄▄▄▄▀ '),nl,
+write('     █                             █     ▐  █       █  █    ▐   █     ▐  '),nl,
+write('     ▐                             ▐        ▐       ▐  ▐        ▐        '),nl,
+write('                                                                         '),nl,nl,nl,           
     retract(isEnemyAlive(_)),
     retract(isRun(_)),
     retract(isFight(_)),

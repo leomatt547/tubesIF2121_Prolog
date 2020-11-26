@@ -1,7 +1,7 @@
 :- dynamic(inventory/4).      /* inventory(NamaItems) */
 :- dynamic(boss/8).           /* boss */
 
-maxInventory(10).
+maxInventory(15).
 
 cekPanjang(Length) :-
     findall(Nama, inventory(_,Nama,_,_), List),
@@ -91,11 +91,18 @@ status :-
     player(Username),
     write('Username Anda adalah '), write(Username), nl, nl,
     makeListItems(ListNama,ListQuantity),
-    write('Item Anda'),nl,nl,
+    write(' '),nl,
+    write('=============================='),nl,
+    write('888  w                        '),nl,
+    write(' 8  w8ww .d88b 8d8b.d8b. d88b '),nl,
+    write(' 8   8   8.dP` 8P Y8P Y8 `Yb. '),nl,
+    write('888  Y8P `Y88P 8   8   8 Y88P '),nl,
+    write('=============================='),nl,
     stt2(ListNama,ListQuantity),
     makeListBoss(NamaBoss,HealthBoss),
     write('Musuh Terakhirmu:'),nl,nl,
-    stt(NamaBoss,HealthBoss).
+    stt(NamaBoss,HealthBoss),nl,
+    write('=============================='),nl.
 
 mystatus :-
     myjob(ID, Name, Level, MaxHealth,Health, Attack, Defense, Special, Exp),
@@ -103,6 +110,13 @@ mystatus :-
     gold(Uang),
     claim(Satu,Dua,Tiga),
     job(ID,Nama,_,_,_,_,_,_),
+    write(' '),nl,
+    write('============================'),nl,
+    write(' .d88b.  w         w        '),nl,
+    write(' YPwww. w8ww .d88 w8ww d88b '),nl,
+    write('     d8  8   8  8  8   `Yb. '),nl,
+    write(' `Y88P`  Y8P `Y88  Y8P Y88P '),nl,
+    write('============================'),nl,                       
     write('Username Anda adalah :'), write(Username), nl,nl,
     write('Nama Job Anda        :'),write(Name),nl,
     write('Level Karakter Anda  :'),write(Level),nl,
@@ -114,8 +128,11 @@ mystatus :-
     write('Experience Karakter Anda:'),write(Exp),nl,
     write('Gold Anda:'),write(Uang),nl,
     write('History Musuh:'),nl,
-    write('Claim gua        :'), write(Satu),write(' '),write(Dua),write(' '),write(Tiga),nl,nl,
-    write(Nama),nl.
+    write('Total Enemy killed  :'),
+    write('   Slime: '),write(Satu),write(' '),nl,
+    write('   Wolf: '),write(Dua),write(' '),nl,
+    write('   Goblin: '),write(Tiga),nl,
+    write('============================='),nl.
 
 statusInventory :-
     init(_),
