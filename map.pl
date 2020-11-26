@@ -7,6 +7,7 @@
 :- dynamic(boss1/2).
 :- dynamic(boss2/2).
 :- dynamic(boss3/2).
+:- dynamic(myjob/9).
 
 initBossMap :-
     lebar(L),
@@ -297,7 +298,12 @@ initMap(X, Y) :-
 
 initPlayer :-
     asserta(positionX(1)),
-    asserta(positionY(1)).
+    asserta(positionY(1)),
+    karakter(A),
+    B is A,
+    job(B, Name2, Level2, MaxHealth2, Attack2, Defense2, Special2, Exp2),
+    Health2 is MaxHealth2,
+    asserta(myjob(B, Name2, Level2, MaxHealth2,Health2, Attack2, Defense2, Special2, Exp2)).
 
 map :- 
     init(_),

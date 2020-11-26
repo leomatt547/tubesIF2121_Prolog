@@ -87,6 +87,7 @@ end_condition(X) :-
     have(X), !,
     N is 1,
     asserta(stage(N)),
+    asserta(claim(0,0,0)),
     asserta(karakter(X)),
     random(15,30,Sizex),
     random(15,30,Sizey),

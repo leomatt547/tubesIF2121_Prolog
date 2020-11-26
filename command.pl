@@ -399,8 +399,8 @@ d :-
 
 
 tukar :-
-    claim(satu,dua,tiga),
-    satu >= 1, dua >= 1, tiga >= 1,
+    claim(Satu,Dua,Tiga),
+    Satu >= 1, Dua >= 1, Tiga >= 1,
     init(_),
     positionX(X),
     positionY(Y),
@@ -418,7 +418,7 @@ tukar :-
 
 tukar :-
     init(_),
-    \+claim(_,_,_),
+    \+claim(1,1,1),
     positionX(X),
     positionY(Y),
     isQuest(X,Y),
