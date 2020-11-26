@@ -82,7 +82,7 @@ stt([A|X],[B|Y]) :-
 stt2([],[]).
 stt2([A|X],[B|Y]) :-
     write(A),nl,
-    write('Quantity: '),
+    write('Durability/Qty: '),
     write(B),nl,nl,
     stt2(X,Y).
 
@@ -98,10 +98,13 @@ status :-
     stt(NamaBoss,HealthBoss).
 
 mystatus :-
+    \+isFight(_),
     myjob(ID, Name, Level, MaxHealth,Health, Attack, Defense, Special, Exp),
+    player(Username),
     gold(Uang),
-    write('ID Karakter Anda     :'),write(ID),nl,
-    write('Nama Karakter Anda   :'),write(Name),nl,
+    job(ID,Nama,_,_,_,_,_,_),
+    write('Username Anda adalah :'), write(Username), nl,nl,
+    write('Nama Job Anda        :'),write(Name),nl,
     write('Level Karakter Anda  :'),write(Level),nl,
     write('MaxHealth Karakter Anda:'),write(MaxHealth),nl,
     write('Health Karakter Anda :'),write(Health),nl,
@@ -109,7 +112,9 @@ mystatus :-
     write('Defense Karakter Anda:'),write(Defense),nl,
     write('Special Karakter Anda:'),write(Special),nl,
     write('Experience Karakter Anda:'),write(Exp),nl,
-    write('Gold Anda:'),write(Uang),nl,nl.
+    write('Gold Anda:'),write(Uang),nl,nl,
+    write('History Musuh:'),nl,
+    write(Nama),nl.
 
 statusInventory :-
     init(_),
