@@ -405,6 +405,7 @@ bisaclaim :-
 
 tukar :-
     init(_),
+    isclaim(_),
     positionX(X),
     positionY(Y),
     isQuest(X,Y),
@@ -521,7 +522,7 @@ shop :-
     ),!.
 
 triggered :-
-    random(81,100,L),
+    random(1,100,L),
     (
         L >= 80
         -> enemyTriggered

@@ -25,6 +25,34 @@ bossTriggered1 :-
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
     write('Kamu bertemu Boss 1 :'), write(Name), write('!!!'), nl,nl,
+                                        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                
+                                  ▓▓▓▓░░░░░░░░░░░░▓▓▓▓                              
+                                ▓▓▓▓▒▒░░░░░░░░░░░░░░░░▓▓                            
+                              ▓▓▓▓▒▒▒▒░░░░░░░░░░░░░░░░▓▓▓▓                          
+                            ▓▓▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░▓▓▓▓                        
+                          ▓▓▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░▓▓▓▓                      
+                          ▓▓▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓                    
+                          ▓▓▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░▓▓                    
+                          ▓▓▒▒▒▒▒▒████████████░░░░████████░░░░▓▓▓▓                  
+                        ▓▓▓▓▒▒▒▒▒▒██░░░░░░████░░░░██░░░░░░██░░░░▓▓                  
+                        ▓▓▒▒▒▒▒▒████░░░░░░░░██░░░░████░░░░██░░░░▓▓                  
+                        ▓▓▒▒▒▒▒▒██████████████░░░░░░████████░░░░▓▓                  
+                        ▓▓▒▒▒▒▒▒▒▒░░░░░░████░░░░░░░░░░░░░░░░░░░░▓▓                  
+                        ▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓                  
+                      ▓▓▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓                  
+                      ▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░▓▓▓▓░░░░░░░░░░▓▓                
+                      ▓▓▒▒▒▒▒▒▒▒░░▓▓░░▓▓▓▓▓▓▓▓▓▓░░░░▓▓▓▓░░░░░░░░░░▓▓                
+                    ▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░▓▓                
+                    ▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░▓▓                
+                    ▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░▓▓              
+                    ▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░▓▓            
+                    ▓▓▒▒▒▒▒▒░░▓▓▓▓░░░░░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░▓▓            
+                  ▓▓▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓        
+        ▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓  
+  ▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓
+▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
+▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓
+        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      
     asserta(isEnemyAlive(1)),
     fight, !.
 
@@ -48,8 +76,37 @@ bossTriggered3 :-
     Health is MaxHealth,
     asserta(enemy(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),nl,
     write('Kamu bertemu Boss 3 :'), write(Name), write('!!!'), nl,nl,
+    write('             __                  __'),nl,
+    write('            ( _)                ( _)'),nl,
+    write('           / /''\\''            / /\'_'),nl,
+    write('          / /   ''\\''            / / | '\'\''),nl,
+    write('         / /     ''\\''         / /  |\ '\'\''),nl,
+    write('        /  /   ,  \ ,       / /   /|  \ '\''),nl,
+    write('       /  /    |\_ /|      / /   / \   \_\''),nl,
+    write('      /  /  |\/ _ '_| \   / /   /   \    \\''),nl,
+    write('     |  /   |/  0 \0\    / |    |    \    \\'),nl,
+    write('     |    |\|      \_\_ /  /    |     \    \\'),nl,
+    write('     |  | |/    \.\ o\o)  /      \     |    \\'),nl,
+    write('     \    |     /\\`v-v  /        |    |     \\'),nl,
+    write('      | \/    /_| \\_|  /         |    | \    \\'),nl,
+    write('      | |    /__/_ `-` /   _____  |    |  \    \\'),nl,
+    write('      \|    [__]  \_/  |_________  \   |   \    ()'),nl,
+    write('       /    [___] (    \         \  |\ |   |   //'),nl,
+    write('     |    [___]                  |\| \|   /  |/'),nl,
+    write('     /|    [____]                  \  |/\ / / ||'),nl,
+    write('   (  \   [____ /     ) _\      \  \    \| | ||'),nl,
+    write('     \  \  [_____|    / /     __/    \   / / //'),nl,
+    write('     |   \ [_____/   / /        \    |   \/ //'),nl,
+    write('     |   /  '----|   /=\____   _/    |   / //),nl,
+    write('  __ /' /        |  /   ___/  '_/''\ '  ''  | ||),nl,
+    write(' ('/-(/-\)'       /   \  (/\/\)/  |    '/'|'/'),nl,
+    write('             (/\/\)           /   /   //'),nl,
+    write('                    _________/   /    /'),nl,
+    write('                   \____________/    ('),nl,nl,
+    write(''),
     asserta(isEnemyAlive(1)),
     fight, !.
+                                                 ,--,  ,.-.
 
 
 /*Kasus Lari doang tanpa ketemu musuh */
@@ -138,7 +195,7 @@ pick(X) :-
         Status =:= 1 ->
         Level2 is MyLevel,
         MaxHealth2 is MyMaxHealth,
-        Health2 is MyMaxHealth,
+        Health2 is MyHealth,
         Attack2 is MyAttack,
         Defense2 is MyDefense,
         Special2 is MySpecial,
@@ -154,7 +211,7 @@ pick(X) :-
             Defense2 is MyDefense+10,
             Level2 is MyLevel,
             MaxHealth2 is MyMaxHealth,
-            Health2 is MyMaxHealth,
+            Health2 is MyHealth,
             Attack2 is MyAttack,
             Special2 is MySpecial,
             Exp2 is MyExp,
@@ -169,7 +226,7 @@ pick(X) :-
                 Attack2 is (MyAttack+10),
                 Level2 is MyLevel,
                 MaxHealth2 is MyMaxHealth,
-                Health2 is MyMaxHealth,
+                Health2 is MyHealth,
                 Defense2 is MyDefense,
                 Special2 is MySpecial,
                 Exp2 is MyExp,
@@ -248,7 +305,7 @@ attack :-
 
 attackComment :-
     enemy(ID, EnemyName,_, _,EnemyHealth, _, _, _,_),
-    myjob(_,Nama,_,_,_,Attack,Defense,_,Exp),
+    myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp),
     (
         EnemyHealth > 0 ->
         write('Health '), write(EnemyName), write(' tersisa '), write(EnemyHealth), nl,
@@ -262,55 +319,122 @@ attackComment :-
             write(EnemyName), write(' mati!'), nl,
             (
                 ID =:= 4 ->
-                claim(Tambah,_,_),
+                claim(Tambah,Haha,Hahaha),
+                Haha is Haha,
+                Hahaha is Hahaha,
                 Temptambah is Tambah+1,
-                retract(claim(Tambah,_,_)),
-                asserta(claim(Temptambah,_,_)),
+                retract(claim(Tambah,Haha,Hahaha)),
+                asserta(claim(Temptambah,Haha,Hahaha)),
                 write('Slime berhasil dimasukkan dalam Quest'),nl
                 ;
                 (
                     ID =:= 5 ->
-                    claim(_,Tambah,_),
+                    claim(Haha,Tambah,Hahaha),
+                    Haha is Haha,
+                    Hahaha is Hahaha,
                     Temptambah is Tambah+1,
-                    retract(claim(_,Tambah,_)),
-                    asserta(claim(_,Temptambah,_)),
+                    retract(claim(Haha,Tambah,Hahaha)),
+                    asserta(claim(Haha,Temptambah,Hahaha)),
                     write('Wolf berhasil dimasukkan dalam Quest'),nl
                     ;
                     (
                         ID =:= 6 ->
-                        claim(_,_,Tambah),
+                        claim(Haha,Hahaha,Tambah),
                         Temptambah is Tambah+1,
-                        retract(claim(_,_,Tambah)),
-                        asserta(claim(_,_,Temptambah)),
+                        Haha is Haha,
+                        Hahaha is Hahaha,
+                        retract(claim(Haha,Hahaha,Tambah)),
+                        asserta(claim(Haha,Hahaha,Temptambah)),
                         write('Goblin berhasil dimasukkan dalam Quest'),nl
+                        ;
+                        (
+                            ID =:= 100 ->
+                            stage(Ubah),
+                            Gold(Uang),
+                            TempUang is Uang+500,
+                            retract(Gold(_)),
+                            retract(stage(_)),
+                            asserta(stage(2)),
+                            asserta(Gold(TempUang)),
+                            write('Ubah Stage ke 2')
+                            ;
+                            (
+                                ID =:= 101 ->
+                                stage(Ubah),
+                                Gold(Uang),
+                                TempUang is Uang+1000,
+                                retract(Gold(_)),
+                                retract(stage(_)),
+                                asserta(stage(3)),
+                                asserta(Gold(TempUang)),
+                                write('Ubah Stage ke 3')
+                                ;
+                                (
+                                    ID =:= 102 ->
+                                    stage(Ubah),
+                                    write('menang'),
+                                    win
+                                    ;
+                                )
+                            )
+                        )
                     )
                 )
             ),
             retract(enemy(_,EnemyName,_,_,_,_,_,_,_)),
             retract(isFight(_)),
             isPick(A),
-            write('isPick A adalah angka'),write(A),
             (
-                A =:= 2 ->
-                TAttack is (Attack-10),
-                retract(myjob(_,Nama,_,_,_,Attack,_,_,_)),
-                asserta(myjob(_,Nama,_,_,_,TAttack,_,_,_))
+                A =:= 1 ->
+                Level2 is MyLevel,
+                MaxHealth2 is MyMaxHealth,
+                Health2 is (MyHealth+10),
+                Attack2 is MyAttack,
+                Defense2 is MyDefense,
+                Special2 is MySpecial,
+                Exp2 is (MyExp+50),
+                retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
+                asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
+                retract(isPick(_)),
+                retract(isRun(_)),
+                retract(isEnemyAlive(_)),
+                markLevelUp(Level,TempExp)
                 ;
                 (
-                    A =:= 3 ->
-                    TDefense is (Defense-10),
-                    retract(myjob(_,Nama,_,_,_,_,Defense,_,_)),
-                    asserta(myjob(_,Nama,_,_,_,_,TDefense,_,_))
+                    A =:= 2 ->
+                    Defense2 is (MyDefense-10),
+                    Level2 is MyLevel,
+                    MaxHealth2 is MyMaxHealth,
+                    Health2 is MyHealth,
+                    Attack2 is MyAttack,
+                    Special2 is MySpecial,
+                    Exp2 is (MyExp+50),
+                    retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
+                    asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
+                    retract(isPick(_)),
+                    retract(isRun(_)),
+                    retract(isEnemyAlive(_)),
+                    markLevelUp(Level,TempExp)
+                    ;
+                    (
+                        A =:= 3 ->
+                        Attack2 is (MyAttack-10),
+                        Level2 is MyLevel,
+                        MaxHealth2 is MyMaxHealth,
+                        Health2 is MyHealth,
+                        Defense2 is MyDefense,
+                        Special2 is MySpecial,
+                        Exp2 is (MyExp+50),
+                        retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
+                        asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
+                        retract(isPick(_)),
+                        retract(isRun(_)),
+                        retract(isEnemyAlive(_)),
+                        markLevelUp(Level,Exp2)
+                    )
                 )
             ),
-            retract(isPick(_)),
-            retract(isRun(_)),
-            retract(isEnemyAlive(_)),
-            bisaclaim
-            /*TempExp is (Exp+50),
-            retract(myjob(_,Nama,Level,_,_,_,_,_,Exp)),
-            asserta(myjob(_,Nama,Level,_,_,_,_,_,TempExp)),
-            markLevelUp(_,Level,TempExp)*/
+            mystatus
         )
     ),
     !.
@@ -347,3 +471,19 @@ enemyAttackComment :-
         ) 
     ),
     !.
+
+win :-
+    write('You Win'),
+    retract(isEnemyAlive(_)),
+    retract(isRun(_)),
+    retract(isFight(_)),
+    retract(isPick(_)),
+    quit.
+
+lose :-
+    write('You Lose'),
+    retract(isEnemyAlive(_)),
+    retract(isRun(_)),
+    retract(isFight(_)),
+    retract(isPick(_)),
+    quit.

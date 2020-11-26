@@ -324,7 +324,7 @@ legenda :-
             write('@ = tembok'),nl
             ;
             (
-                N =:= 2 ->
+                N =:= 3 ->
                 write('# = tembok'),nl
             )
         )

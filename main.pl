@@ -49,11 +49,17 @@ initFirst :-
     asserta(player(Username)), nl,
     write('Hello '), write(Username), nl,
     repeat,
-    write('Choose your job'), nl, nl,
-    write('1. hero'), nl,
-    write('2. paladin'), nl,
-    write('3. wizard'),nl,
-    write('Insert job: '),
+    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl,
+    write('%                                                                               %'),nl,
+    write('%                              ~Job Selection~                                  %'),nl,
+    write('%                                                                               %'),nl,
+    write('%                                                                               %'),nl,
+    write('% 1. Hero    : All-rounder, high on health                                      %'),nl,
+    write('% 2. Paladin : Proficient in defense                                            %'),nl,
+    write('% 3. Wizard  : Glass Cannon, high on attack but low on max health               %'),nl,
+    write('%                                                                               %'),nl,
+    write('%                                                                               %'),nl,                                       
+    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl, nl.
     read(Jobstart), nl,
     job(ID,Jobstart,_,_,_,_,_,_),
     (
@@ -138,12 +144,12 @@ quit :-
     retract(lebar(_)),
     retract(panjang(_)),
     retract(tembok(_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_)),
-    retract(claim(_)),
+    retract(claim(_,_,_)),
     forall(inventory(_, _, _,_), (
         retract(inventory(_, _, _,_))
 	)),
-    forall(boss(_,_,_,_,_,_,_), (
-        retract(boss(_,_,_,_,_,_,_))
+    forall(boss(_,_,_,_,_,_,_,_), (
+        retract(boss(_,_,_,_,_,_,_,_))
     )),
     (
         (boss1(_,_),boss2(_,_))

@@ -98,10 +98,10 @@ status :-
     stt(NamaBoss,HealthBoss).
 
 mystatus :-
-    \+isFight(_),
     myjob(ID, Name, Level, MaxHealth,Health, Attack, Defense, Special, Exp),
     player(Username),
     gold(Uang),
+    claim(Satu,Dua,Tiga),
     job(ID,Nama,_,_,_,_,_,_),
     write('Username Anda adalah :'), write(Username), nl,nl,
     write('Nama Job Anda        :'),write(Name),nl,
@@ -112,8 +112,9 @@ mystatus :-
     write('Defense Karakter Anda:'),write(Defense),nl,
     write('Special Karakter Anda:'),write(Special),nl,
     write('Experience Karakter Anda:'),write(Exp),nl,
-    write('Gold Anda:'),write(Uang),nl,nl,
+    write('Gold Anda:'),write(Uang),nl,
     write('History Musuh:'),nl,
+    write('Claim gua        :'), write(Satu),write(' '),write(Dua),write(' '),write(Tiga),nl,nl,
     write(Nama),nl.
 
 statusInventory :-
