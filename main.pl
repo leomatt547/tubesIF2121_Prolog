@@ -11,6 +11,9 @@
 :- include('inventory.pl').
 :- include('battle.pl').
 
+/* Ignore Singleton */
+:-style_check(-singleton).
+
 title :-
     write('   ____  U _____ u _   _    ____     _   _               _   _ '),nl,
     write('U /"___|u | ___"|/| * |"|  / __"| u | | | |     ___     | | |"| '),nl,
@@ -26,18 +29,18 @@ title :-
     write('And in that glassy surface, is the reflection of a huge new world'),nl,nl,
     write('Good isekai game!!'),nl,nl,
     write('Lets play and be a programmer'),nl,nl,
-    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl,
-    write('%                              ~Genshin Asik~                                  %'),nl,
-    write('% 1. start  : untuk memulai petualanganmu                                      %'),nl,
-    write('% 2. map    : menampilkan peta                                                 %'),nl,
-    write('% 3. status : menampilkan kondisimu terkini                                    %'),nl,
-    write('% 4. w      : gerak ke utara 1 langkah                                         %'),nl,
-    write('% 5. s      : gerak ke selatan 1 langkah                                       %'),nl,
-    write('% 6. d      : gerak ke ke timur 1 langkah                                      %'),nl,
-    write('% 7. a      : gerak ke barat 1 langkah                                         %'),nl,
-    write('% 8. help   : menampilkan segala bantuan                                       %'),nl,
-    write('% 9. Status : menampilkan status pemain                                        %'),nl,
-    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl, nl.
+    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl,
+    write('%                              ~Genshin Asik~                                   %'),nl,
+    write('% 1. start   : untuk memulai petualanganmu                                      %'),nl,
+    write('% 2. map     : menampilkan peta                                                 %'),nl,
+    write('% 3. status  : menampilkan kondisimu terkini                                    %'),nl,
+    write('% 4. w       : gerak ke utara 1 langkah                                         %'),nl,
+    write('% 5. s       : gerak ke selatan 1 langkah                                       %'),nl,
+    write('% 6. d       : gerak ke ke timur 1 langkah                                      %'),nl,
+    write('% 7. a       : gerak ke barat 1 langkah                                         %'),nl,
+    write('% 8. help    : menampilkan segala bantuan                                       %'),nl,
+    write('% 9. mystatus: menampilkan status pemain                                        %'),nl,
+    write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'),nl, nl.
 
 initFirst :-
     write('Welcome to Genshin Asik.'), nl,

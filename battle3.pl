@@ -4,6 +4,8 @@
 :- dynamic(isPick/1).
 :- dynamic(isRun/1).
 :- dynamic(isFight/1).
+/* Ignore Singleton */
+:-style_check(-singleton).
 
 enemyTriggered :-  
     random(4, 7, ID),
@@ -120,7 +122,7 @@ pick(X) :-
     isEnemyAlive(_),
     isFight(_),
     \+ isPick(_),
-    \+ inventory(_,X,_,_),
+    \+ inventory(ID,X,Quantity,Status),
     write('Kamu ga punya item itu. Perhatikan daftar item di inventori!'),
     fightChance, 
     !.
@@ -130,16 +132,16 @@ pick(X) :-
     isEnemyAlive(_),
     isFight(_),
     \+ isPick(_),
-    myjob(_, Nama, _, MyMaxHealth, MyHealth, MyAttack, MyDefense,_,_),
-    inventory(_,X,_,Status),
+    myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp),
+    inventory(ID,X,Quantity,Status),
     (
         /*Pick Health*/
         Status =:= 1 ->
         Health2 is MyMaxHealth,
         Attack2 is MyAttack,
         Defense2 is MyDefense,
-        retract(myjob(_,Nama,_,MyMaxHealth, MyHealth,MyAttack,MyDefense,_,_)),
-        asserta(myjob(_,Nama,_,MyMaxHealth, Health2,Attack2,Defense2,_,_)),
+        retract(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp)),
+        asserta(myjob(ID,Nama,Level,MyMaxHealth, Health2,Attack2,Defense2,Spesial,Exp)),
         write('Kamu memilih '), write(X), write(' untuk menyembuhkan dirimu '), nl,
         asserta(isPick(1))
         ;
@@ -149,8 +151,8 @@ pick(X) :-
             Defense2 is MyDefense+10,
             Attack2 is MyAttack,
             Health2 is MyHealth,
-            retract(myjob(_,Nama,_,_, MyHealth,MyAttack,MyDefense,_,_)),
-            asserta(myjob(_,Nama, _,_,Health2,Attack2,Defense2,_,_)),
+            retract(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp)),
+            asserta(myjob(ID, Nama,Level, MyMaxHealth, Health2, Attack2, Defense2,Spesial,Exp)),
             write('Kamu memilih '), write(X), write(' untuk defense dirimu '), nl,
             asserta(isPick(2))
             ;
@@ -160,8 +162,8 @@ pick(X) :-
                 Attack2 is (MyAttack+10),
                 Health2 is MyHealth,
                 Defense2 is MyDefense,
-                retract(myjob(_,Nama,_,_,MyHealth,MyAttack,MyDefense,_,_)),
-                asserta(myjob(_,Nama,_,_,Health2,Attack2,Defense2,_,_)),
+                retract(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp)),
+                asserta(myjob(ID, Nama,Level, MyMaxHealth, Health2, Attack2, Defense2,Spesial,Exp)),
                 write('Kamu memilih '), write(X), write(' untuk attack musuh '), nl,
                 asserta(isPick(3))
             )
@@ -190,7 +192,8 @@ fight :-
     isEnemyAlive(_),
     statusInventory,
     write('kamu hanya bisa attack atau defense saja'),nl,
-    write('pilih armor untuk defend dan attack dengan tangan, pilih weapon untuk attack dengan senjata'),nl,
+    write('pilih armor untuk defend dan attack dengan tangan,'),nl,
+    write('pilih weapon untuk attack dengan senjata'),nl,
     write('Ketik pick(barangnya). --> Contoh: pick(pedang).'),nl,nl,
     !.
 
@@ -223,8 +226,8 @@ attack :-
     isEnemyAlive(_),
     isFight(_),
     isPick(_),
-    myjob(_, Nama, _,_,_,MyAttack,_,_,_),
-    enemy(ID, NamaEnemy, _,_,EnemyHealth,_,_,_,_),
+    myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp),
+    enemy(ID, NamaEnemy, Level, MaxHealth,EnemyHealth, Attack, Defense, Special,Exp),
     NewEnemyHealth is (EnemyHealth-MyAttack),
     retract(enemy(ID, NamaEnemy, Level, MaxHealth,EnemyHealth, Attack, Defense, Special,Exp)),
     asserta(enemy(ID, NamaEnemy, Level, MaxHealth,NewEnemyHealth, Attack, Defense, Special,Exp)),
@@ -233,8 +236,8 @@ attack :-
     !.
 
 attackComment :-
-    enemy(ID, EnemyName,_, _,EnemyHealth, _, _, _,_),
-    myjob(_,Nama,_,_,_,Attack,Defense,_,Exp),
+    enemy(ID, NamaEnemy, Level, MaxHealth,EnemyHealth, Attack, Defense, Special,Exp),
+    myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp),
     (
         EnemyHealth > 0 ->
         write('Health '), write(EnemyName), write(' tersisa '), write(EnemyHealth), nl,
@@ -272,21 +275,19 @@ attackComment :-
                     )
                 )
             ),
-            retract(enemy(_,EnemyName,_,_,_,_,_,_,_)),
+            retract(enemy(ID, NamaEnemy, Level, MaxHealth,EnemyHealth, Attack, Defense, Special,Exp)),
             retract(isFight(_)),
-            isPick(A),
-            write('isPick A adalah angka'),write(A),
             (
                 A =:= 2 ->
-                TAttack is (Attack-10),
-                retract(myjob(_,Nama,_,_,_,Attack,_,_,_)),
-                asserta(myjob(_,Nama,_,_,_,TAttack,_,_,_))
+                TAttack is (MyAttack-10),
+                retract(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp)),
+                asserta(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, TAttack, MyDefense,Spesial,Exp))
                 ;
                 (
                     A =:= 3 ->
-                    TDefense is (Defense-10),
-                    retract(myjob(_,Nama,_,_,_,_,Defense,_,_)),
-                    asserta(myjob(_,Nama,_,_,_,_,TDefense,_,_))
+                    TDefense is (MyDefense-10),
+                    retract(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp)),
+                    asserta(myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, TDefense,Spesial,Exp))
                 )
             ),
             retract(isPick(_)),
@@ -304,13 +305,13 @@ attackComment :-
 /*Attack*/
 enemyAttack :-
     /*myjob(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)*/
-    enemy(_, NamaEnemy, _,_,_,EnemyAttack,_,_,_),
-    myjob(_, Nama, _,_,MyHealth,_,_,_,_),
+    enemy(ID, NamaEnemy,Level,MaxHealth,Health,EnemyAttack,EnemyDefense,Special,Exp),
+    myjob(ID, Nama,Level, MyMaxHealth, MyHealth, MyAttack, MyDefense,Spesial,Exp),
     isFight(_),
     isPick(_),
     NewMyHealth is (MyHealth-EnemyAttack),
-    retract(myjob(_, Nama, Level, MaxHealth,_, Attack, Defense, Special,Exp)),
-    asserta(myjob(_, Nama, Level, MaxHealth,NewMyHealth, Attack, Defense, Special,Exp)),
+    retract(myjob(ID, Nama, Level, MaxHealth,_, Attack, Defense, Special,Exp)),
+    asserta(myjob(ID, Nama, Level, MaxHealth,NewMyHealth, Attack, Defense, Special,Exp)),
     write(NamaEnemy), write(' sudah attack!'), nl,
     enemyAttackComment,
     !.
@@ -319,7 +320,7 @@ enemyAttack :-
 enemyAttackComment :-
     isFight(_),
     isPick(_),
-    myjob(_, Nama, _, _, MyHealth, _, _, _, _),
+    myjob(ID, Nama, _, _, MyHealth, _, _, _, _),
     (
         MyHealth > 0 ->
         write('Health '), write(Nama), write(' Anda tersisa '), write(MyHealth)

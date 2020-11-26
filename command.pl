@@ -1,16 +1,17 @@
 :- dynamic(claim/3).
 :- dynamic(gold/1).
+:- dynamic(isclaim/1).
 
 help :-
     init(_),
-    write('1. start  : untuk memulai petualanganmu '),nl,
-    write('2. map    : menampilkan peta'),nl,
-    write('3. status : menampilkan kondisimu terkini'),nl,
-    write('4. w      : gerak ke utara 1 langkah'),nl,
-    write('5. s      : gerak ke selatan 1 langkah'),nl,
-    write('6. d      : gerak ke ke timur 1 langkah'),nl,
-    write('7. a      : gerak ke barat 1 langkah'),nl,
-    write('8. Status : menampilkan status pemain'),nl.
+    write('1. start     : untuk memulai petualanganmu '),nl,
+    write('2. map       : menampilkan peta'),nl,
+    write('3. status    : menampilkan kondisimu terkini'),nl,
+    write('4. w         : gerak ke utara 1 langkah'),nl,
+    write('5. s         : gerak ke selatan 1 langkah'),nl,
+    write('6. d         : gerak ke ke timur 1 langkah'),nl,
+    write('7. a         : gerak ke barat 1 langkah'),nl,
+    write('8. mystatus  : menampilkan status pemain'),nl.
 
 w :-
     init(_),
@@ -397,10 +398,12 @@ d :-
     \+init(_),
     write('Game belum dimulai').
 
+bisaclaim :-
+    claim(Satu,Dua,Tiga),
+    Satu \== 0, Dua \== 0, Tiga \== 0,
+    asserta(isclaim(1)).
 
 tukar :-
-    claim(Satu,Dua,Tiga),
-    Satu >= 1, Dua >= 1, Tiga >= 1,
     init(_),
     positionX(X),
     positionY(Y),
@@ -414,11 +417,13 @@ tukar :-
     retract(myjob(_,_,_,_,_,_,_,_,Exp)),
     asserta(myjob(_,_,_,_,_,_,_,_,TempExp)),
     write('Anda mendapatkan Gold dan Exp'),
-    retract(claim(_,_,_)),!.
+    retract(claim(_,_,_)),
+    retract(isclaim(_)),
+    !.
 
 tukar :-
     init(_),
-    \+claim(1,1,1),
+    \+isclaim(_),
     positionX(X),
     positionY(Y),
     isQuest(X,Y),

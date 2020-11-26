@@ -7,16 +7,6 @@ levelUp(ID) :-
     TempSpecial is (Special + 15),
     retract(myjob(ID,_,Level,_,_,_,_,_,_)),
     asserta(myjob(ID, Name, TempLevel, TempMaxHealth, TempHealth, TempAttack,_, TempSpecial,_)).
-    
-levelUpEnemy(ID) :-
-    enemy(ID, Name, Level, MaxHealth, _, Attack, _, Special),
-    TempLevel is (Level+1),
-    TempMaxHealth is (MaxHealth*1.1),
-    TempHealth is TempMaxHealth,
-    TempAttack is (Attack*1.1),
-    TempSpecial is (Special*1.1),
-    retract(enemy(ID,_,Level,_,_,_,_)),
-    asserta(enemy(ID, Name, TempLevel, TempMaxHealth, TempHealth, TempAttack, _ , TempSpecial)).
 
 markLevelUp(ID,Level,Exp) :-
     Level =< 1,

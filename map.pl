@@ -301,9 +301,9 @@ initPlayer :-
     asserta(positionY(1)),
     karakter(A),
     B is A,
-    job(B, Name2, Level2, MaxHealth2, Attack2, Defense2, Special2, Exp2),
+    job(B, Name2, Level2, MaxHealth2, Attack2, Defense2, Special2, Exp),
     Health2 is MaxHealth2,
-    asserta(myjob(B, Name2, Level2, MaxHealth2,Health2, Attack2, Defense2, Special2, Exp2)).
+    asserta(myjob(B, Name2, Level2, MaxHealth2,Health2, Attack2, Defense2, Special2, Exp)).
 
 map :- 
     init(_),
