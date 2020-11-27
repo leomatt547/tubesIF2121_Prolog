@@ -109,7 +109,7 @@ mystatus :-
     player(Username),
     gold(Uang),
     claim(Satu,Dua,Tiga),
-    job(ID,Nama,_,_,_,_,_,_),
+    job(ID,Name,_,_,_,_,_,_),
     write(' '),nl,
     write('============================'),nl,
     write(' .d88b.  w         w        '),nl,

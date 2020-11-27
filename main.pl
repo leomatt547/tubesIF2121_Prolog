@@ -125,7 +125,7 @@ initFirst :-
                     write('    `MM A`  `MM A`      MM    AMV    ,pm9MM    MM     8MI    MM  '),nl,
                     write('     :MM;    :MM;       MM   AMV  , 8M   MM    MM     `Mb    MM  '),nl,
                     write('      VF      VF      .JMML.AMMmmmM `Moo9^Yo..JMML.    `Wbmd"MML.'),nl,
-                    write('                                                                 '),nl,,
+                    write('                                                                 '),nl,
                     write('                [O(((((([========================---             '),nl
                 )
             )
@@ -178,7 +178,7 @@ start :-
     write('  ** *      *    **    **     **   **   **   **            ****  **     **     **    **     **            **     '),nl,
     write('   ***     *     **    **     **   **   **   ****    *    * **** *      **     **    **     ***           **     '),nl,
     write('    *******       ***** **    ***  ***  ***   *******        ****        **     ***** **     ***           **    '),nl,
-    write('      ***          ***   **    ***  ***  ***   *****                             ***   **                        '),nl,
+    write('      ***          ***   **    ***  ***  ***   *****                             ***   **                        '),nl.
                                                                                                                                       
 
 start :-

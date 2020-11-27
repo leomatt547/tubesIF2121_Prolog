@@ -5,7 +5,6 @@ levelUp(Nama) :-
     TempHealth is TempMaxHealth,
     TempAttack is (MyAttack + 15),
     TempSpecial is (MySpecial + 15),
-    MaxHealth2 is MyMaxHealth,
     Defense2 is MyDefense,
     Exp2 is MyExp,
     retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
