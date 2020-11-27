@@ -128,7 +128,7 @@ mystatus :-
     write('Experience Karakter Anda:'),write(Exp),nl,
     write('Gold Anda:'),write(Uang),nl,
     write('History Musuh:'),nl,
-    write('Total Enemy killed  :'),
+    write('Total Enemy killed  :'),nl,
     write('   Slime: '),write(Satu),write(' '),nl,
     write('   Wolf: '),write(Dua),write(' '),nl,
     write('   Goblin: '),write(Tiga),nl,
