@@ -48,16 +48,16 @@ delItems(Nama) :-
     !,fail.
 
 delItems(Nama) :-
-    inventory(ID, Nama, TempQuantity,_),
+    inventory(ID, Nama, TempQuantity,Status),
     TempQuantity \== 1,
     Quantity is (TempQuantity-1),
-    retract(inventory(ID, Nama, TempQuantity,_)),
-    asserta(inventory(ID, Nama, Quantity,_)),!.
+    retract(inventory(ID, Nama, TempQuantity,Status)),
+    asserta(inventory(ID, Nama, Quantity,Status)),!.
 
 delItems(Nama) :-
-    inventory(_, Nama, TempQuantity,_),
+    inventory(_, Nama, TempQuantity,Status),
     TempQuantity =:= 1,
-    retract(inventory(_, Nama, TempQuantity,_)),!.
+    retract(inventory(_, Nama, TempQuantity,Status)),!.
 
 initBoss(ID) :-
     job(ID, Name, Level, MaxHealth, Attack, Defense, Special, Exp),
