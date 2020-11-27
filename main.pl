@@ -215,6 +215,7 @@ quit :-
     retract(positionX(_)),
     retract(stage(_)),
     retract(gold(_)),
+    retract(isclaim(_)),
     retract(positionY(_)),
     retract(lebar(_)),
     retract(panjang(_)),

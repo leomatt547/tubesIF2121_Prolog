@@ -497,6 +497,14 @@ d :-
     write('Game belum dimulai').
 
 tukar :-
+    claim(A,B,C),
+    (
+        A \== 0, B \== 0, C \== 0 -->
+        asserta(isclaim(1))
+    ),
+    tukar2.
+
+tukar2 :-
     init(_),
     isclaim(_),
     positionX(X),
@@ -515,7 +523,7 @@ tukar :-
     retract(isclaim(_)),
     !.
 
-tukar :-
+tukar2 :-
     init(_),
     \+isclaim(_),
     positionX(X),
