@@ -19,7 +19,7 @@
 
 ## Source
 * GNU Prolog Documentation
-* http://www.learnprolognow.org/
+ http://www.learnprolognow.org/
 
 ## Creators
 *  Alvin Wilta 13519163
