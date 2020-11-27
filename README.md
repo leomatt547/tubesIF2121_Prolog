@@ -1,8 +1,8 @@
 # IF2121-Logika-Komputasional
 
-**Tugas Besar IF2121 Logika Komputasional**
+**Tugas Besar Logika Komputasional IF2121**
 
-**Genshin Waigfu**
+**Genshin Waifu**
 
 ## Specification
 * Create a RPG Game with specified features and mechanism. 
