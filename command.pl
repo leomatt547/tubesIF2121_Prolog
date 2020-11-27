@@ -103,6 +103,7 @@ w :-
 
 w :-
     init(_),
+    stage(1),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -114,6 +115,7 @@ w :-
 
 w :-
     init(_),
+    stage(2),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -125,6 +127,7 @@ w :-
 
 w :-
     init(_),
+    stage(3),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -218,6 +221,7 @@ a :-
 
 a :-
     init(_),
+    stage(1),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -229,6 +233,7 @@ a :-
 
 a :-
     init(_),
+    stage(2),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -240,6 +245,7 @@ a :-
 
 a :-
     init(_),
+    stage(3),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -333,6 +339,7 @@ s :-
 
 s :-
     init(_),
+    stage(1),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -344,6 +351,7 @@ s :-
 
 s :-
     init(_),
+    stage(2),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -355,6 +363,7 @@ s :-
 
 s :-
     init(_),
+    stage(3),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -449,6 +458,7 @@ d :-
 
 d :-
     init(_),
+    stage(1),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -460,6 +470,7 @@ d :-
 
 d :-
     init(_),
+    stage(2),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
@@ -471,6 +482,7 @@ d :-
 
 d :-
     init(_),
+    stage(3),
     \+ isEnemyAlive(_),
     positionX(TX),
     positionY(T),
