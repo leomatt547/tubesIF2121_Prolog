@@ -316,7 +316,6 @@ pick(X) :-
                 retract(myjob(_,Nama,MyLevel,MyMaxHealth, MyHealth,MyAttack,MyDefense,MySpecial,MyExp)),
                 asserta(myjob(_,Nama,Level2,MaxHealth2,Health2,Attack2,Defense2,Special2,Exp2)),
                 write('Kamu memilih '), write(X), write(' untuk attack musuh '), nl,
-                mystatus,
                 asserta(isPick(3))
             )
         )
@@ -554,7 +553,8 @@ enemyAttackComment :-
     myjob(_, Nama, _, _, MyHealth, _, _, _, _),
     (
         MyHealth > 0 ->
-        write('Health '), write(Nama), write(' Anda tersisa '), write(MyHealth)
+        write('Health '), write(Nama), write(' Anda tersisa '), write(MyHealth),nl,
+        write('ketik <attack.> untuk melanjutkan attack!'),nl
         ;
         (
             MyHealth =< 0 ->
