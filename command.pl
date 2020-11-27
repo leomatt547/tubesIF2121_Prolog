@@ -519,7 +519,12 @@ tukar2 :-
     retract(myjobID, Name, Level, MaxHealth, Health, Attack, Defense, Special, Exp)),
     asserta(myjob(ID, Name, Level, MaxHealth, Health, Attack, Defense, Special, TempExp)),
     write('Anda mendapatkan Gold dan Exp'),
-    retract(claim(_,_,_)),
+    claim(A,B,C),
+    D is A-1,
+    E is B-1,
+    F is C-1,
+    retract(claim(A,B,C)),
+    asserta(claim(D,E,F)),
     retract(isclaim(_)),
     !.
 
