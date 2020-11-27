@@ -151,9 +151,6 @@ end_condition(X) :-
     statusInventory,!.
 
 
-
-
-
 do(X) :- have(X),!.
 do(_) :- write('Hey jangan ngasal ya!').
 do(end).
@@ -216,6 +213,8 @@ quit :-
     write('    *******       ***** **    ***  ***  ***   *******      *******    ***   ***   *****        '),nl,
     write('      ***          ***   **    ***  ***  ***   *****        *****      ***   ***   ***         '),nl,
     retract(positionX(_)),
+    retract(stage(_)),
+    retract(gold(_)),
     retract(positionY(_)),
     retract(lebar(_)),
     retract(panjang(_)),
