@@ -499,7 +499,7 @@ d :-
 tukar :-
     claim(A,B,C),
     (
-        A \== 0, B \== 0, C \== 0 -->
+        A \== 0, B \== 0, C \== 0 ->
         asserta(isclaim(1))
     ),
     tukar2.
